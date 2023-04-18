@@ -1,0 +1,32 @@
+{
+	"name": "nuxt-app",
+	"private": true,
+	"prisma": {
+		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+	},
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"sb:stop": "npx env-cmd npx supabase stop --backup",
+		"sb:start": "npx env-cmd npx supabase start"
+	},
+	"devDependencies": {
+		"@nuxt/devtools": "^0.4.0",
+		"@nuxtjs/supabase": "^0.3.5",
+		"@prisma/client": "^4.12.0",
+		"@types/node": "^18.15.11",
+		"env-cmd": "^10.1.0",
+		"nuxt": "^3.4.1",
+		"prisma": "^4.12.0",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.0.4"
+	},
+	"dependencies": {
+		"@pinia/nuxt": "^0.4.8",
+		"stripe": "^12.1.1",
+		"zod": "^3.21.4"
+	}
+}
