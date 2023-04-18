@@ -61,6 +61,9 @@ CREATE TABLE "note" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "profile_supabase_uid_key" ON "profile"("supabase_uid");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "membership_profile_id_account_id_key" ON "membership"("profile_id", "account_id");
 
 -- CreateIndex
