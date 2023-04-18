@@ -2,11 +2,11 @@
 
 ## Not Production Ready
 
-Please don't hitch your wagon to this star just yet... I'm coding this in the open and the TODO list is verrrrrry long.
+Please don't hitch your wagon to this star just yet...
 
 ## Tech Stack
 
--   Nuxt
+-   Nuxt 3
 -   Supabase local environment (Auth including OAuth + Postgresql instance)
 -   Prisma (Schema management + Strongly typed client)
 -   Pinia (State Store)
@@ -17,7 +17,7 @@ Please don't hitch your wagon to this star just yet... I'm coding this in the op
 
 ### User Management
 
--   [ ] User authentication via Supabase including Social Signon (e.g. google) Email/Password (TODO) and Magic Link
+-   [ ] User authentication via Supabase including Social Signon (e.g. google, github) Email/Password and Magic Link
 -   [ ] Full list of available [providers](https://supabase.com/docs/guides/auth#providers)
 -   [ ] User roles and permissions (admin, regular user, etc. roles defined in the [Prisma Schema](/prisma/schema.prisma))
 -   [ ] User Email captured on initial login
@@ -32,7 +32,7 @@ Please don't hitch your wagon to this star just yet... I'm coding this in the op
 
 ### Config Management and Env integration
 
--   [ ] [Config](/nuxt.config.ts) for Stripe Keys
+-   [x] [Config](/nuxt.config.ts) for Stripe Keys
 -   [x] [Env](/.env_example) keys for Supabase and Stripe
 -   [ ] Config Switches for free trial - If you want a 'free trial period' set initialPlanName to an appropriate plan name in the DB and initialPlanActiveMonths to a positive value. If you don't want a free trial, set initialPlanName to an appropriate 'No Plan' plan in the DB and set the initialPlanActiveMonths to -1.
 

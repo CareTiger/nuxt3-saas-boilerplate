@@ -11,7 +11,8 @@
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"sb:stop": "npx env-cmd npx supabase stop --backup",
-		"sb:start": "npx env-cmd npx supabase start"
+		"sb:start": "npx env-cmd npx supabase start",
+		"sb:types": "npx supabase gen types typescript --local tb > db_types.ts"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "^0.4.0",
