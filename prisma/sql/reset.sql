@@ -23,8 +23,10 @@ alter default privileges in schema public grant all on sequences to postgres, an
 -- 2. FUNCTIONS AND TRIGGERS ON USER SIGNUP/UPDATE/DELETE IN AUTH TABLE
 -- 
 -- create/update/delete a new user in profiles table on signup
--- CREATE inserts a row into public."profile"
+-- CREATE inserts a row into public."profile" & public."account"
 create or replace function public.handle_new_user() returns trigger as $$ begin
+insert into public."account" (user_uid)
+values (new.id::text);
 insert into public."profile" (user_uid, email)
 values (new.id::text, new.email);
 return new;

@@ -22,37 +22,25 @@ model Profile {
     email        String
     display_name String?
     avatar_url   String?
-    account      Account @relation(fields: [accountId], references: [id])
-    accountId    Int
 
     @@map("profile")
 }
 
 model Account {
-    id                     Int       @id @default(autoincrement())
-    profile                Profile[]
-    name                   String
-    current_period_ends    DateTime  @default(now())
+    id                     Int      @id @default(autoincrement())
+    user_uid               String   @unique
+    name                   String?
+    current_period_ends    DateTime @default(now())
     features               String[]
-    plan_id                Int
-    plan                   Plan      @relation(fields: [plan_id], references: [id])
-    plan_name              String
+    plan_id                Int      @default(1)
+    plan                   Plan     @relation(fields: [plan_id], references: [id])
+    plan_name              String?
     notes                  Note[]
-    max_notes              Int       @default(100)
+    max_notes              Int      @default(100)
     stripe_subscription_id String?
     stripe_customer_id     String?
 
     @@map("account")
-}
-
-model Note {
-    id         Int      @id @default(autoincrement())
-    account_id Int?
-    account    Account? @relation(fields: [account_id], references: [id])
-
-    note_text String
-
-    @@map("note")
 }
 
 model Plan {
@@ -64,4 +52,14 @@ model Plan {
     stripe_product_id String?
 
     @@map("plan")
+}
+
+model Note {
+    id         Int      @id @default(autoincrement())
+    account_id Int?
+    account    Account? @relation(fields: [account_id], references: [id])
+
+    note_text String
+
+    @@map("note")
 }
