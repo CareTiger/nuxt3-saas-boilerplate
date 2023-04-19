@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		shim: false,
 	},
 
-	modules: ["@nuxtjs/supabase", "@pinia/nuxt"],
+	modules: ["@nuxtjs/supabase", "@pinia/nuxt", "@nuxtjs/tailwindcss"],
 
 	runtimeConfig: {
 		stripeSecretKey: process.env.STRIPE_SECRET_KEY,
@@ -21,7 +21,9 @@ export default defineNuxtConfig({
 			siteRootUrl: "http://localhost:3000",
 		},
 	},
-
+	tailwindcss: {
+		cssPath: "~/assets/css/tailwind.css",
+	},
 	devtools: {
 		// Enable devtools (default: true)
 		enabled: true,

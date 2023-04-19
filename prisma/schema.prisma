@@ -12,12 +12,12 @@ datasource db {
 }
 
 model Profile {
-    id           Int     @id @default(autoincrement())
-    supabase_uid String  @unique
+    id           Int          @id @default(autoincrement())
+    supabase_uid String       @unique
     email        String
     display_name String?
-
-    memberships Membership[]
+    avatar_url   String?
+    memberships  Membership[]
 
     @@map("profile")
 }

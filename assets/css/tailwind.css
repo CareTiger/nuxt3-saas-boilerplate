@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="text"] {
+	@apply border border-gray-600 rounded-md;
+}
+input[type="email"] {
+	@apply border border-gray-600 rounded-md;
+}
+input[type="password"] {
+	@apply border border-gray-600 rounded-md;
+}
