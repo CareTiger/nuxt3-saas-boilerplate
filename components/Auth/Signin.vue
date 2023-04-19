@@ -26,6 +26,9 @@
 						<NuxtLink to="/privacy">Privacy Statement</NuxtLink> and
 						<NuxtLink to="/terms">Terms of Service</NuxtLink>.
 					</p>
+					<p>
+						<NuxtLink to="/forgot">Forgot your password?</NuxtLink>
+					</p>
 					<button type="submit" :disabled="loading">Sign In</button>
 				</div>
 			</form>
