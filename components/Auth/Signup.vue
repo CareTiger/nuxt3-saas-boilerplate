@@ -77,9 +77,9 @@
 			<p>or sign up with</p>
 
 			<button
-				@click="client.auth.signInWithOAuth({ provider: 'google' })"
+				@click="client.auth.signInWithOAuth({ provider: 'github' })"
 			>
-				Google
+				Github
 			</button>
 		</div>
 	</div>
