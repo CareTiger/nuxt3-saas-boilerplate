@@ -23,9 +23,7 @@ async function signout() {
 	<div>
 		<div class="flex flex-row justify-between">
 			<div>
-				<span v-if="!user"
-					><NuxtLink to="/">Nuxt 3 Boilerplate</NuxtLink></span
-				>
+				<span><NuxtLink to="/">Nuxt 3 Boilerplate</NuxtLink></span>
 			</div>
 			<div class="flex space-x-4">
 				<span
