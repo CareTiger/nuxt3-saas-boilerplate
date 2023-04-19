@@ -19,16 +19,15 @@ alter default privileges in schema public grant all on sequences to postgres, an
 --
 
 -- table public.user
-alter table public.user
+alter table public.profile
 enable row level security;
 
--- table public.notifications
-alter table public.notifications
-enable row level security;
 
-CREATE POLICY  "user can select/insert/update/delete their own notfications." ON notifications
-FOR ALL
-USING (text(auth.uid()) = user_id);
+-- CREATE POLICY "Enable CRUD for users based on user_uid" ON "public"."profile"
+-- AS PERMISSIVE FOR ALL
+-- TO public
+-- USING (auth.uid()::text = user_uid)
+-- WITH CHECK (auth.uid()::text = user_uid);
 
 -- table public.todos
 alter table public.todos

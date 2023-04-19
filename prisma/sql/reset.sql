@@ -1,11 +1,11 @@
 --
--- THIS FILE HAS THE BARE MINIMUS SCRIPTS TO RECREATE THE SAAS-BOILERPLATE DATABASE RLS POLICIES, SCHEMA, FUNCTIONS, TRIGGERS AND VIEWS
+-- THIS FILE HAS THE BARE MINIMUS SCRIPTS TO RESET THE SAAS-BOILERPLATE DATABASE RLS POLICIES, SCHEMA, FUNCTIONS, TRIGGERS AND VIEWS
 -- IT DOES NOT INCLUDE THE DATA
 -- TO RESTORE THE DATA, USE THE BACKUP FILE IN THE BACKUP FOLDER
 --
 
 --
--- 1. FIX PRISMA SCHEMA DRIFTS
+-- 1. FIX PRISMA SCHEMA DRIFTS/ FORCE RESETS
 -- THIS SCRIPT IS A SOLVE FOR ANY SCHEMA DRIFTS CAUSED BY PRISMA. 
 -- READ MORE HERE - https://supabase.com/docs/guides/integrations/prisma#troubleshooting
 -- 
@@ -25,8 +25,8 @@ alter default privileges in schema public grant all on sequences to postgres, an
 -- create/update/delete a new user in profiles table on signup
 -- CREATE inserts a row into public."profile"
 create or replace function public.handle_new_user() returns trigger as $$ begin
-insert into public."profile" (supabase_uid, email)
-values (new.id, new.email);
+insert into public."profile" (user_uid, email)
+values (new.id::text, new.email);
 return new;
 end;
 $$ language plpgsql security definer;
@@ -39,7 +39,7 @@ insert on auth.users for each row execute procedure public.handle_new_user();
 create or replace function public.handle_updated_user() returns trigger as $$ begin
 update public."profile"
 set email = new.email
-where supabase_uid = new.id::text;
+where user_uid = new.id::text;
 return new;
 end;
 $$ language plpgsql security definer;
@@ -52,7 +52,7 @@ update on auth.users for each row execute procedure public.handle_updated_user()
 -- -- DELETE a row from public."profile" when the user is deleted
 create or replace function public.handle_deleted_user() returns trigger as $$ begin
 delete from public."profile"
-where supabase_uid = old.id::text;
+where user_uid = old.id::text;
 return old;
 end;
 $$ language plpgsql security definer;
@@ -65,15 +65,3 @@ after delete on auth.users for each row execute procedure public.handle_deleted_
 -- 3. RESET RLS POLICIES ON RELEVANT TABLES
 -- ENABLE RLS ON ALL TABLES AND CREATE RLS POLICIES FOR EACH TABLE
 --
-
--- table public.profile
-alter table public.profile
-enable row level security;
-
--- table public.notifications
-alter table public.membership
-enable row level security;
-
-CREATE POLICY  "user can select/insert/update/delete their own notfications." ON notifications
-FOR ALL
-USING (text(auth.uid()) = user_id);
