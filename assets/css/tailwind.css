@@ -3,18 +3,20 @@
 @tailwind utilities;
 
 input[type="text"] {
-	@apply border border-gray-600 rounded-md;
+	@apply border border-gray-600 rounded-md w-full;
 }
 input[type="email"] {
-	@apply border border-gray-600 rounded-md;
+	@apply border border-gray-600 rounded-md w-full;
 }
 input[type="password"] {
-	@apply border border-gray-600 rounded-md;
+	@apply border border-gray-600 rounded-md w-full;
 }
 button {
 	@apply bg-blue-500 text-white px-2 py-2 rounded-md;
 }
-
 button[type="submit"] {
 	@apply bg-blue-500 text-white px-2 py-2 rounded-md;
+}
+a {
+	@apply text-blue-500;
 }
