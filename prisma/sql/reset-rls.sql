@@ -1,5 +1,5 @@
 --
--- THIS FILE HAS THE BARE MINIMUS SCRIPTS TO RESET THE SAAS-BOILERPLATE DATABASE RLS POLICIES, SCHEMA, FUNCTIONS, TRIGGERS AND VIEWS
+-- THIS FILE HAS THE BARE MINIMUS SCRIPTS TO RESET RLS POLICIES, SCHEMA, FUNCTIONS, TRIGGERS AND VIEWS
 -- IT DOES NOT INCLUDE THE DATA
 -- TO RESTORE THE DATA, USE THE BACKUP FILE IN THE BACKUP FOLDER
 --
@@ -75,11 +75,17 @@ enable row level security;
 alter table public.note
 enable row level security;
 
+CREATE POLICY "Enable CRUD on public.note for users based on user_uid"
+ON public.note
+FOR ALL USING (
+  auth.uid()::text = user_uid
+);
+
 -- table public.profile
 alter table public.profile
 enable row level security;
 
-CREATE POLICY "Enable CRUD for users based on user_uid"
+CREATE POLICY "Enable CRUD on public.profile for users based on user_uid"
 ON public.profile
 FOR ALL USING (
   auth.uid()::text = user_uid

@@ -10,11 +10,11 @@ async function main() {
 			max_notes: 10,
 		},
 	});
-	const individualPlan = await prisma.plan.upsert({
-		where: { name: "Individual Plan" },
+	const basicPlan = await prisma.plan.upsert({
+		where: { name: "Basic Plan" },
 		update: {},
 		create: {
-			name: "Individual Plan",
+			name: "Basic Plan",
 			features: [
 				"ADD_NOTES",
 				"EDIT_NOTES",
@@ -22,11 +22,27 @@ async function main() {
 				"SPECIAL_FEATURE",
 			],
 			max_notes: 20,
-			stripe_product_id: "prod_NQR7vwUulvIeqW",
+			stripe_product_id: "prod_NkVdizfgRmo4f3",
 		},
 	});
-
-	console.log({ freeTrial, individualPlan });
+	const premiumPlan = await prisma.plan.upsert({
+		where: { name: "Premium Plan" },
+		update: {},
+		create: {
+			name: "Premium Plan",
+			features: [
+				"ADD_NOTES",
+				"EDIT_NOTES",
+				"VIEW_NOTES",
+				"SPECIAL_FEATURE",
+				"SPECIAL_FEATURE_2",
+				"SPECIAL_FEATURE_3",
+			],
+			max_notes: 200,
+			stripe_product_id: "prod_NkVeWzKa9k5053",
+		},
+	});
+	console.log({ freeTrial, basicPlan, premiumPlan });
 }
 main()
 	.then(async () => {
