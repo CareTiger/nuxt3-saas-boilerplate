@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useUserStore } from "../stores/user";
-
+import { useNotesStore } from "../stores/notes";
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
 const userStore = useUserStore();
+const notesStore = useNotesStore();
 
 onMounted(async () => {
 	await userStore.init();
+	await notesStore.init();
 });
 
 async function signout() {
@@ -15,7 +17,7 @@ async function signout() {
 	if (userStore) {
 		userStore.signout();
 	}
-	navigateTo("/", { replace: true });
+	navigateTo("/signin", { replace: true });
 }
 </script>
 

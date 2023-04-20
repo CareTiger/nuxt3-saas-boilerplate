@@ -2,7 +2,13 @@ import { defineStore } from "pinia";
 
 export const useNotesStore = defineStore({
 	id: "notes-store",
-	state: () => ({}),
-	actions: {},
+	state: () => ({
+		notes: [],
+	}),
+	actions: {
+		init() {
+			console.log("notes store init");
+		},
+	},
 	getters: {},
 });

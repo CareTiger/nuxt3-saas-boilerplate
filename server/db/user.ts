@@ -8,12 +8,6 @@ export const getProfile = async (user_uid: string) => {
 		select: {
 			user_uid: true,
 			email: true,
-			notes: {
-				select: {
-					id: true,
-					note: true,
-				},
-			},
 		},
 	});
 };
