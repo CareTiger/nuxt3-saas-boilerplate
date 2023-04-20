@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
-export const useAccountStore = defineStore({
-	id: "account-store",
+export const useUserStore = defineStore({
+	id: "user-store",
 	state: () => ({}),
 	actions: {
 		init() {

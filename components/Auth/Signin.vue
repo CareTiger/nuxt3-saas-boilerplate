@@ -71,10 +71,10 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { useAccountStore } from "~/stores/account";
+import { useUserStore } from "~/stores/user.js";
 const user = useSupabaseUser();
 const supabase = useSupabaseAuthClient();
-const accountStore = useAccountStore();
+const userStore = useUserStore();
 const loading = ref(false);
 const email = ref("");
 const emailOTP = ref("");
@@ -109,7 +109,7 @@ const handleStandardLogin = async () => {
 };
 watchEffect(async () => {
 	if (user.value) {
-		await accountStore.init();
+		await userStore.init();
 		navigateTo("/dashboard", { replace: true });
 	}
 });

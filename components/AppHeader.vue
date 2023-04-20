@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useAccountStore } from "../stores/account";
+import { useUserStore } from "../stores/user";
 
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
-const accountStore = useAccountStore();
+const userStore = useUserStore();
 
 onMounted(async () => {
-	await accountStore.init();
+	await userStore.init();
 });
 
 async function signout() {
 	await client.auth.signOut();
-	if (accountStore) {
-		accountStore.signout();
+	if (userStore) {
+		userStore.signout();
 	}
 	navigateTo("/", { replace: true });
 }

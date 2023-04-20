@@ -11,23 +11,34 @@ datasource db {
     shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Can't use same values for url and shadowDatabaseUrl
 }
 
-enum ACCOUNT_ACCESS {
+enum ROLE {
     ADMIN
     USER
 }
 
 model Profile {
-    id           Int      @id @default(autoincrement())
-    user_uid     String   @unique
-    email        String
-    display_name String?
-    avatar_url   String?
-    notes        Note[]
-    account      Account?
-    created      DateTime @default(now())
-    updated      DateTime @default(now())
+    id       Int      @id @default(autoincrement())
+    user_uid String   @unique
+    role     ROLE     @default(USER)
+    email    String   @unique
+    notes    Note[]
+    account  Account?
+    created  DateTime @default(now())
+    updated  DateTime @default(now())
 
     @@map("profile")
+}
+
+model Note {
+    id        Int      @id @default(autoincrement())
+    title     String
+    content   String
+    Profile   Profile  @relation(fields: [profileId], references: [id])
+    profileId Int
+    created   DateTime @default(now())
+    updated   DateTime @default(now())
+
+    @@map("note")
 }
 
 model Account {
@@ -56,19 +67,8 @@ model Plan {
     accounts          Account[]
     max_notes         Int       @default(100)
     stripe_product_id String?
+    created           DateTime  @default(now())
+    updated           DateTime  @default(now())
 
     @@map("plan")
-}
-
-model Note {
-    id       Int    @id @default(autoincrement())
-    user_uid String
-
-    note      String
-    created   DateTime @default(now())
-    updated   DateTime @default(now())
-    Profile   Profile  @relation(fields: [profileId], references: [id])
-    profileId Int
-
-    @@map("note")
 }
