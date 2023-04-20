@@ -8,7 +8,7 @@ generator client {
 datasource db {
     provider          = "postgresql"
     url               = env("DATABASE_URL")
-    shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Important: Do not use the same values for url and shadowDatabaseUrl
+    shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Can't use same values for url and shadowDatabaseUrl
 }
 
 enum ACCOUNT_ACCESS {
@@ -17,28 +17,34 @@ enum ACCOUNT_ACCESS {
 }
 
 model Profile {
-    id           Int     @id @default(autoincrement())
-    user_uid     String  @unique
+    id           Int      @id @default(autoincrement())
+    user_uid     String   @unique
     email        String
     display_name String?
     avatar_url   String?
+    notes        Note[]
+    account      Account?
+    created      DateTime @default(now())
+    updated      DateTime @default(now())
 
     @@map("profile")
 }
 
 model Account {
     id                     Int      @id @default(autoincrement())
-    user_uid               String   @unique
-    name                   String?
+    profile                Profile  @relation(fields: [profileId], references: [id])
+    profileId              Int      @unique
+    name                   String
     current_period_ends    DateTime @default(now())
     features               String[]
     plan_id                Int      @default(1)
     plan                   Plan     @relation(fields: [plan_id], references: [id])
-    plan_name              String?
-    notes                  Note[]
+    plan_name              String
     max_notes              Int      @default(100)
-    stripe_subscription_id String?
-    stripe_customer_id     String?
+    stripe_subscription_id String
+    stripe_customer_id     String
+    created                DateTime @default(now())
+    updated                DateTime @default(now())
 
     @@map("account")
 }
@@ -55,11 +61,14 @@ model Plan {
 }
 
 model Note {
-    id         Int      @id @default(autoincrement())
-    account_id Int?
-    account    Account? @relation(fields: [account_id], references: [id])
+    id       Int    @id @default(autoincrement())
+    user_uid String
 
-    note_text String
+    note      String
+    created   DateTime @default(now())
+    updated   DateTime @default(now())
+    Profile   Profile  @relation(fields: [profileId], references: [id])
+    profileId Int
 
     @@map("note")
 }
