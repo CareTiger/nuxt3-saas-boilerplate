@@ -13,7 +13,8 @@
 		"sb:stop": "npx env-cmd npx supabase stop --backup",
 		"sb:start": "npx env-cmd npx supabase start",
 		"sb:types": "npx supabase gen types typescript --local tb > db_types.ts",
-		"prisma:reset-rls": "npx prisma db execute --file ./prisma/sql/reset-rls.sql --schema ./prisma/schema.prisma"
+		"prisma:reset-rls": "npx prisma db execute --file ./prisma/sql/reset-rls.sql --schema ./prisma/schema.prisma",
+		"prisma:studio": "npx prisma studio --schema ./prisma/schema.prisma"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "^0.4.1",
