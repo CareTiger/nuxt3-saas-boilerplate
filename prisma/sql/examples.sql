@@ -95,7 +95,7 @@ select
     $$
   );
 
-  -- local testing is not currently possible with cron jobs - "schema "cron" does not exist"
+  -- DOES NOT WORK. local testing is not currently possible with cron jobs - "schema "cron" does not exist". I guess you cant add extensions. 
   select
   cron.schedule(
     'invoke-function-every-minute',

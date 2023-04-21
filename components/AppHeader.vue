@@ -30,12 +30,14 @@
 </template>
 <script setup lang="ts">
 import { useUserStore } from "../stores/user";
+import { useAppStore } from "../stores/app";
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
 const userStore = useUserStore();
-
+const appStore = useAppStore();
 onMounted(async () => {
 	await userStore.init();
+	await appStore.init();
 });
 
 async function signout() {
