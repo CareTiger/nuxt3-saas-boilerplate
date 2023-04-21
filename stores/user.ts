@@ -17,7 +17,7 @@ export const useUserStore = defineStore({
 				const data = await $fetch("/api/v1/user/getProfile", {
 					method: "GET",
 					params: {
-						user_uid: user.value.id,
+						userUid: user.value.id,
 					},
 				});
 				this.id = data.id;

@@ -23,7 +23,7 @@ export const getProfile = async (user_uid: string) => {
 			notes: {
 				select: {
 					id: true,
-					profileId: true,
+					profile_id: true,
 					title: true,
 					content: true,
 				},

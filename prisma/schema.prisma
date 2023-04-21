@@ -13,22 +13,22 @@ datasource db {
 }
 
 model Profile {
-    id       Int      @id @default(autoincrement())
-    user_uid String   @unique
-    email    String   @unique
-    role     ROLE     @default(USER)
-    notes    Note[]
-    account  Account?
-    created  DateTime @default(now())
-    updated  DateTime @default(now())
+    id         Int      @id @default(autoincrement())
+    user_uid   String   @unique
+    email      String   @unique
+    role       ROLE     @default(USER)
+    notes      Note[]
+    account    Account?
+    created_at DateTime @default(now())
+    updated_at DateTime @default(now())
 
     @@map("profile")
 }
 
 model Account {
     id                     Int       @id @default(autoincrement())
-    profile                Profile   @relation(fields: [profileId], references: [id])
-    profileId              Int       @unique
+    profile                Profile   @relation(fields: [profile_id], references: [id])
+    profile_id             Int       @unique
     first_name             String?
     last_name              String?
     plan                   Plan      @relation(fields: [plan_id], references: [id])
@@ -36,20 +36,20 @@ model Account {
     stripe_subscription_id String?
     stripe_customer_id     String?
     current_period_ends    DateTime?
-    created                DateTime  @default(now())
-    updated                DateTime  @default(now())
+    created_at             DateTime  @default(now())
+    updated_at             DateTime  @default(now())
 
     @@map("account")
 }
 
 model Note {
-    id        Int      @id @default(autoincrement())
-    title     String
-    content   String
-    Profile   Profile  @relation(fields: [profileId], references: [id])
-    profileId Int
-    created   DateTime @default(now())
-    updated   DateTime @default(now())
+    id         Int      @id @default(autoincrement())
+    title      String
+    content    String
+    Profile    Profile  @relation(fields: [profile_id], references: [id])
+    profile_id Int
+    created_at DateTime @default(now())
+    updated_at DateTime @default(now())
 
     @@map("note")
 }
@@ -61,8 +61,8 @@ model Plan {
     accounts          Account[]
     max_notes         Int       @default(100)
     stripe_product_id String?
-    created           DateTime  @default(now())
-    updated           DateTime  @default(now())
+    created_at        DateTime  @default(now())
+    updated_at        DateTime  @default(now())
 
     @@map("plan")
 }

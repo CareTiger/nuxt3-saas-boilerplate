@@ -3,7 +3,7 @@ import { getProfile } from "~/server/db/user";
 
 export default defineEventHandler(async (event) => {
 	const payload = getQuery(event);
-	if (!payload.user_uid)
+	if (!payload.userUid)
 		return sendError(
 			event,
 			createError({
@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
 			})
 		);
 	try {
-		const user = await getProfile(String(payload.user_uid));
+		const user = await getProfile(String(payload.userUid));
 		// TODO - if uid is not found, return 404 with a message
 		if (!user) {
 			return sendError(
