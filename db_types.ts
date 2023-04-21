@@ -68,129 +68,127 @@ export interface Database {
       }
       account: {
         Row: {
+          created: string
           current_period_ends: string
           features: string[] | null
           id: number
-          join_password: string
-          max_members: number
           max_notes: number
           name: string
           plan_id: number
           plan_name: string
-          stripe_customer_id: string | null
-          stripe_subscription_id: string | null
+          profileId: number
+          stripe_customer_id: string
+          stripe_subscription_id: string
+          updated: string
         }
         Insert: {
+          created?: string
           current_period_ends?: string
           features?: string[] | null
           id?: number
-          join_password: string
-          max_members?: number
           max_notes?: number
           name: string
-          plan_id: number
+          plan_id?: number
           plan_name: string
-          stripe_customer_id?: string | null
-          stripe_subscription_id?: string | null
+          profileId: number
+          stripe_customer_id: string
+          stripe_subscription_id: string
+          updated?: string
         }
         Update: {
+          created?: string
           current_period_ends?: string
           features?: string[] | null
           id?: number
-          join_password?: string
-          max_members?: number
           max_notes?: number
           name?: string
           plan_id?: number
           plan_name?: string
-          stripe_customer_id?: string | null
-          stripe_subscription_id?: string | null
-        }
-      }
-      membership: {
-        Row: {
-          access: Database["public"]["Enums"]["ACCOUNT_ACCESS"]
-          account_id: number
-          id: number
-          pending: boolean
-          profile_id: number
-        }
-        Insert: {
-          access?: Database["public"]["Enums"]["ACCOUNT_ACCESS"]
-          account_id: number
-          id?: number
-          pending?: boolean
-          profile_id: number
-        }
-        Update: {
-          access?: Database["public"]["Enums"]["ACCOUNT_ACCESS"]
-          account_id?: number
-          id?: number
-          pending?: boolean
-          profile_id?: number
+          profileId?: number
+          stripe_customer_id?: string
+          stripe_subscription_id?: string
+          updated?: string
         }
       }
       note: {
         Row: {
-          account_id: number | null
+          content: string
+          created: string
           id: number
-          note_text: string
+          profileId: number | null
+          title: string
+          updated: string
         }
         Insert: {
-          account_id?: number | null
+          content: string
+          created?: string
           id?: number
-          note_text: string
+          profileId?: number | null
+          title: string
+          updated?: string
         }
         Update: {
-          account_id?: number | null
+          content?: string
+          created?: string
           id?: number
-          note_text?: string
+          profileId?: number | null
+          title?: string
+          updated?: string
         }
       }
       plan: {
         Row: {
+          created: string
           features: string[] | null
           id: number
-          max_members: number
           max_notes: number
           name: string
           stripe_product_id: string | null
+          updated: string
         }
         Insert: {
+          created?: string
           features?: string[] | null
           id?: number
-          max_members?: number
           max_notes?: number
           name: string
           stripe_product_id?: string | null
+          updated?: string
         }
         Update: {
+          created?: string
           features?: string[] | null
           id?: number
-          max_members?: number
           max_notes?: number
           name?: string
           stripe_product_id?: string | null
+          updated?: string
         }
       }
       profile: {
         Row: {
-          display_name: string | null
+          created: string
           email: string
           id: number
-          supabase_uid: string
+          role: Database["public"]["Enums"]["ROLE"]
+          updated: string
+          user_uid: string
         }
         Insert: {
-          display_name?: string | null
+          created?: string
           email: string
           id?: number
-          supabase_uid: string
+          role?: Database["public"]["Enums"]["ROLE"]
+          updated?: string
+          user_uid: string
         }
         Update: {
-          display_name?: string | null
+          created?: string
           email?: string
           id?: number
-          supabase_uid?: string
+          role?: Database["public"]["Enums"]["ROLE"]
+          updated?: string
+          user_uid?: string
         }
       }
     }
@@ -201,7 +199,7 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      ACCOUNT_ACCESS: "READ_ONLY" | "READ_WRITE" | "ADMIN" | "OWNER"
+      ROLE: "ADMIN" | "USER"
     }
     CompositeTypes: {
       [_ in never]: never
