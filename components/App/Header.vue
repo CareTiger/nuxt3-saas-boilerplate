@@ -29,8 +29,8 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { useUserStore } from "../stores/user";
-import { useAppStore } from "../stores/app";
+import { useUserStore } from "@/stores/user";
+import { useAppStore } from "@/stores/app";
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
 const userStore = useUserStore();
