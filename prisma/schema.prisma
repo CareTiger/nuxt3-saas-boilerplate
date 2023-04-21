@@ -38,20 +38,18 @@ model Note {
 }
 
 model Account {
-    id                     Int      @id @default(autoincrement())
-    profile                Profile  @relation(fields: [profileId], references: [id])
-    profileId              Int      @unique
-    name                   String
-    current_period_ends    DateTime @default(now())
-    features               String[]
-    plan                   Plan     @relation(fields: [plan_id], references: [id])
-    plan_id                Int      @default(1)
-    plan_name              String
-    max_notes              Int      @default(100)
-    stripe_subscription_id String
-    stripe_customer_id     String
-    created                DateTime @default(now())
-    updated                DateTime @default(now())
+    id                     Int       @id @default(autoincrement())
+    profile                Profile   @relation(fields: [profileId], references: [id])
+    profileId              Int       @unique
+    first_name             String
+    last_name              String
+    plan                   Plan?     @relation(fields: [plan_id], references: [id])
+    plan_id                Int?      @default(1)
+    stripe_subscription_id String?
+    stripe_customer_id     String?
+    current_period_ends    DateTime?
+    created                DateTime  @default(now())
+    updated                DateTime  @default(now())
 
     @@map("account")
 }
