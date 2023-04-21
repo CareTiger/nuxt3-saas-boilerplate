@@ -1,26 +1,3 @@
-<script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { useUserStore } from "../stores/user";
-import { useNotesStore } from "../stores/notes";
-const client = useSupabaseAuthClient();
-const user = useSupabaseUser();
-const userStore = useUserStore();
-const notesStore = useNotesStore();
-
-onMounted(async () => {
-	await userStore.init();
-	await notesStore.init();
-});
-
-async function signout() {
-	await client.auth.signOut();
-	if (userStore) {
-		userStore.signout();
-	}
-	navigateTo("/signin", { replace: true });
-}
-</script>
-
 <template>
 	<div>
 		<div class="flex flex-row justify-between">
@@ -52,3 +29,25 @@ async function signout() {
 		<hr />
 	</div>
 </template>
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useUserStore } from "../stores/user";
+import { useNotesStore } from "../stores/notes";
+const client = useSupabaseAuthClient();
+const user = useSupabaseUser();
+const userStore = useUserStore();
+const notesStore = useNotesStore();
+
+onMounted(async () => {
+	await userStore.init();
+	await notesStore.init();
+});
+
+async function signout() {
+	await client.auth.signOut();
+	if (userStore) {
+		userStore.signout();
+	}
+	navigateTo("/signin", { replace: true });
+}
+</script>

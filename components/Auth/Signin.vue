@@ -59,7 +59,7 @@
 			</form>
 		</div>
 
-		<div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<!-- <div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
 			<p>or sign in with</p>
 
 			<button
@@ -67,7 +67,7 @@
 			>
 				Github
 			</button>
-		</div>
+		</div> -->
 	</div>
 </template>
 <script setup lang="ts">
