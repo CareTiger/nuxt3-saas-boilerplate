@@ -1,13 +1,14 @@
 import { defineStore } from "pinia";
+import { Note } from "~/types/global";
 
 export const useNotesStore = defineStore({
 	id: "notes-store",
 	state: () => ({
-		notes: [],
+		notes: [] as Note[],
 	}),
 	actions: {
-		init() {
-			console.log("notes store init");
+		init(notes: Note[]) {
+			this.notes = notes;
 		},
 	},
 	getters: {},

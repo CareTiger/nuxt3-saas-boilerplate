@@ -40,7 +40,6 @@ const notesStore = useNotesStore();
 
 onMounted(async () => {
 	await userStore.init();
-	await notesStore.init();
 });
 
 async function signout() {

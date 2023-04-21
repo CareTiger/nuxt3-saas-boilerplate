@@ -43,8 +43,8 @@ model Account {
     profileId              Int       @unique
     first_name             String
     last_name              String
-    plan                   Plan?     @relation(fields: [plan_id], references: [id])
-    plan_id                Int?      @default(1)
+    plan                   Plan      @relation(fields: [plan_id], references: [id])
+    plan_id                Int       @default(1)
     stripe_subscription_id String?
     stripe_customer_id     String?
     current_period_ends    DateTime?
