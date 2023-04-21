@@ -13,10 +13,11 @@
 		"sb:stop": "npx env-cmd npx supabase stop --backup",
 		"sb:start": "npx env-cmd npx supabase start",
 		"sb:types": "npx supabase gen types typescript --local tb > ./types/db_types.ts",
-		"prisma": "npm run prisma:privileges && npm run prisma:rls && npm run prisma:rls",
+		"prisma": "npm run prisma:privileges && npm run prisma:rls && npm run prisma:realtime",
 		"prisma:privileges": "npx prisma db execute --file ./prisma/sql/privileges.sql --schema ./prisma/schema.prisma",
 		"prisma:rls": "npx prisma db execute --file ./prisma/sql/rls.sql --schema ./prisma/schema.prisma",
 		"prisma:storage": "npx prisma db execute --file ./prisma/sql/storage.sql --schema ./prisma/schema.prisma",
+		"prisma:realtime": "npx prisma db execute --file ./prisma/sql/realtime.sql --schema ./prisma/schema.prisma",
 		"prisma:studio": "npx prisma studio --schema ./prisma/schema.prisma"
 	},
 	"devDependencies": {
