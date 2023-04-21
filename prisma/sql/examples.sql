@@ -76,3 +76,36 @@ using ( bucket_id = 'sampyl' );
 create policy "Individual user insert"
 on storage.objects for INSERT
 with check ( auth.uid() = owner );    
+
+
+--
+-- 5. CRON JOBS FOR SCHEDULING FUNCTIONS 
+--
+select
+  cron.schedule(
+    'invoke-function-every-minute',
+    '* * * * *', -- every minute
+    $$
+    select
+      net.http_post(
+          url:='https://project-ref.functions.supabase.co/function-name',
+          headers:='{"Content-Type": "application/json", "Authorization": "Bearer YOUR_ANON_KEY"}'::jsonb,
+          body:=concat('{"time": "', now(), '"}')::jsonb
+      ) as request_id;
+    $$
+  );
+
+  -- local testing is not currently possible with cron jobs - "schema "cron" does not exist"
+  select
+  cron.schedule(
+    'invoke-function-every-minute',
+    '* * * * *', -- every minute
+    $$
+    select
+      net.http_post(
+          url:='http://localhost:54321/functions/v1/hello_world',
+          headers:='{"Content-Type": "application/json", "Authorization": "Bearer YOUR_ANON_KEY"}'::jsonb,
+          body:=concat('{"time": "', now(), '"}')::jsonb
+      ) as request_id;
+    $$
+  );
