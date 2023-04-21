@@ -1,3 +1,3 @@
 <template>
-	<div>pricing</div>
+	<div><AppPricing /></div>
 </template>

@@ -28,11 +28,7 @@ async function signout() {
 				<span><NuxtLink to="/">Nuxt 3 Boilerplate</NuxtLink></span>
 			</div>
 			<div class="flex space-x-4">
-				<span
-					><NuxtLink v-if="!user" to="/pricing"
-						>Pricing</NuxtLink
-					></span
-				>
+				<span><NuxtLink to="/pricing">Pricing</NuxtLink></span>
 				<span v-if="user"
 					><NuxtLink to="/dashboard">Dashboard</NuxtLink></span
 				>

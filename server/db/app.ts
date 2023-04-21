@@ -7,6 +7,7 @@ export const getPlans = async () => {
 			name: true,
 			features: true,
 			max_notes: true,
+			// TODO add pricing
 		},
 	});
 };
