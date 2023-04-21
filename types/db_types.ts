@@ -115,7 +115,7 @@ export interface Database {
           content: string
           created: string
           id: number
-          profileId: number | null
+          profileId: number
           title: string
           updated: string
         }
@@ -123,7 +123,7 @@ export interface Database {
           content: string
           created?: string
           id?: number
-          profileId?: number | null
+          profileId: number
           title: string
           updated?: string
         }
@@ -131,7 +131,7 @@ export interface Database {
           content?: string
           created?: string
           id?: number
-          profileId?: number | null
+          profileId?: number
           title?: string
           updated?: string
         }

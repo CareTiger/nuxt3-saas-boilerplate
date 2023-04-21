@@ -5,10 +5,14 @@ export const getProfile = async (user_uid: string) => {
 		where: {
 			user_uid,
 		},
-		include: {
+		select: {
+			id: true,
+			email: true,
+			role: true,
 			notes: {
 				select: {
 					id: true,
+					profileId: true,
 					title: true,
 					content: true,
 				},
