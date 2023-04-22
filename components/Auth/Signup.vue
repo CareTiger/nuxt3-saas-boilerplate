@@ -125,7 +125,7 @@ const handleStandardSignup = async () => {
 };
 
 watchEffect(() => {
-	console.log(user.value);
+	// console.log(user.value);
 	if (user.value) {
 		navigateTo("/dashboard", { replace: true });
 	}

@@ -11,6 +11,7 @@
 				<span v-if="user"
 					><NuxtLink to="/account">Account</NuxtLink></span
 				>
+				<span v-if="user"><NuxtLink to="/notes">Notes</NuxtLink></span>
 			</div>
 			<div class="flex flex-row space-x-4">
 				<span v-if="!user"

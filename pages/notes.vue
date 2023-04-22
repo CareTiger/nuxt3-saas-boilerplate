@@ -1,5 +1,5 @@
 <template>
-	<div>account</div>
+	<div>notes</div>
 </template>
 <script setup lang="ts">
 definePageMeta({

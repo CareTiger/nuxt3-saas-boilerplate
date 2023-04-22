@@ -1,9 +1,9 @@
 <template>
-	<div>account</div>
+	<div>Admin</div>
 </template>
 <script setup lang="ts">
 definePageMeta({
 	title: "Admin",
-	middleware: ["auth"],
+	middleware: ["auth", "admin"],
 });
 </script>
