@@ -8,5 +8,5 @@ drop publication if exists supabase_realtime;
 create publication supabase_realtime;
 commit;
 -- add a table to the publication
-alter publication supabase_realtime add table note;
+alter publication supabase_realtime add table notification;
 

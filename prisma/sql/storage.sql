@@ -1,14 +1,13 @@
 --
 -- STORAGE BUCKET CREATION AND POLICIES
--- THIS WORKS BUT,
 -- TODO how to drop and recreate the bucket
 --
-
--- seed storage bucket and folders
-
 -- if exists delete bucket saas;
+-- if exists (select 1 from storage.buckets where id = 'saas') then
+--   delete from storage.buckets where id = 'saas';
+-- end if;
 
--- create bucket saas;
+-- -- create bucket saas;
 insert into storage.buckets (id, name) values ('saas', 'saas');
 
 -- create policies for the newly created buckets
@@ -17,7 +16,8 @@ create policy "Public Access"
 on storage.objects for select
 using ( bucket_id = 'saas' );
 
--- Allow a user full access their own files
-create policy "Individual user insert"
-on storage.objects for INSERT
-with check ( auth.uid() = owner );    
+-- Allow select access to any files in the "saas" bucket
+CREATE POLICY "Give users select access to own folder" ON storage.objects FOR SELECT TO public USING (bucket_id = 'saas' AND auth.uid()::text = (storage.foldername(name))[1]);  
+
+-- Allow insert access to any files in the "saas" bucket
+CREATE POLICY "Give users insert access to own folder" ON storage.objects FOR INSERT TO public WITH CHECK (bucket_id = 'saas' AND auth.uid()::text = (storage.foldername(name))[1]);
