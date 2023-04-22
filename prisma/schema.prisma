@@ -13,14 +13,20 @@ datasource db {
 }
 
 model Profile {
-    id         Int      @id @default(autoincrement())
-    user_uid   String   @unique
-    email      String   @unique
-    role       ROLE     @default(USER)
-    notes      Note[]
-    account    Account?
-    created_at DateTime @default(now())
-    updated_at DateTime @default(now())
+    id               Int       @id @default(autoincrement())
+    user_uid         String    @unique
+    email            String    @unique
+    display_name     String?
+    bio              String?
+    first_name       String?
+    last_name        String?
+    dob              DateTime?
+    profile_location String?
+    role             ROLE      @default(USER)
+    notes            Note[]
+    account          Account?
+    created_at       DateTime  @default(now())
+    updated_at       DateTime  @default(now())
 
     @@map("profile")
 }
@@ -29,8 +35,6 @@ model Account {
     id                     Int       @id @default(autoincrement())
     profile                Profile   @relation(fields: [profile_id], references: [id])
     profile_id             Int       @unique
-    first_name             String?
-    last_name              String?
     plan                   Plan      @relation(fields: [plan_id], references: [id])
     plan_id                Int       @default(1)
     stripe_subscription_id String?
