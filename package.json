@@ -25,10 +25,10 @@
 	"scriptsComments": {
 		"sb:start": "starts the supabase docker container",
 		"sb:stop": "stops the supabase docker container and creates a backup",
-		"sb:types": "creates types for the supabase client",
-		"reset": "Resets the database and runs the privileges, rls and realtime, triggers scripts",
-		"prisma:storage": "Creates a storage bucket and adds a trigger to delete files when a row is deleted",
-		"prisma": "Runs the privileges, rls, storage and realtime scripts"
+		"sb:types": "creates data types for the supabase client",
+		"reset": "Resets the database and runs the prisma meta scripts",
+		"prisma": "Runs the privileges, rls, storage and realtime scripts",
+		"prisma:storage": "Creates a storage bucket and adds a trigger to delete files when a row is deleted"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "^0.4.1",
