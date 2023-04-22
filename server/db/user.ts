@@ -1,5 +1,16 @@
 import { prisma } from ".";
 
+export const getRole = async (user_uid: string) => {
+	return await prisma.profile.findFirst({
+		where: {
+			user_uid,
+		},
+		select: {
+			role: true,
+		},
+	});
+};
+
 export const getProfile = async (user_uid: string) => {
 	return await prisma.profile.findFirst({
 		where: {
