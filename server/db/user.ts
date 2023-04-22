@@ -8,12 +8,10 @@ export const getProfile = async (user_uid: string) => {
 		select: {
 			id: true,
 			email: true,
-			role: true,
+			display_name: true,
 			account: {
 				select: {
 					id: true,
-					first_name: true,
-					last_name: true,
 					plan_id: true,
 					current_period_ends: true,
 					stripe_customer_id: true,

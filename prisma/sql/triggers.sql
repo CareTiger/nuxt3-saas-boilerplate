@@ -1,21 +1,18 @@
 --
 -- FUNCTIONS AND TRIGGERS ON USER SIGNUP/UPDATE/DELETE IN AUTH TABLE
 -- 
--- create/update/delete a new user in profiles and account table on signup/update/delete in auth table
--- inserts a row into public.profile when a new user is created
-create or replace function public.handle_new_user() returns trigger as $$ begin
 
--- insert a row into public.profile with the user_uid and email
+--
+-- PUBLIC.PROFILE
+-- create/update/delete a new user in profile table on signup/update/delete in auth table
+--
+-- inserts a row into public.profile when a new user is created with the user_uid and email
+create or replace function public.handle_new_user() returns trigger as $$ begin
 insert into public."profile" (user_uid, email)
 values (new.id::text, new.email);
--- insert a row into public.account with the profile_id
--- insert into public."account" (profileId)
--- values (new.id::number);
-
 return new;
 end;
 $$ language plpgsql security definer;
-
 -- trigger the handle_new_user() function every time a user is created
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
@@ -49,3 +46,22 @@ $$ language plpgsql security definer;
 drop trigger if exists on_auth_user_deleted on auth.users;
 create trigger on_auth_user_deleted
 after delete on auth.users for each row execute procedure public.handle_deleted_user();
+
+--
+-- PUBLIC.ACCOUNT
+-- create/update/delete a new user entry in account table on signup/update/delete in auth table
+--
+-- insert a row into public.account with the profile_id
+create or replace function public.handle_new_user_account() returns trigger as $$ begin
+insert into public."account" (profile_id)
+values (new.id);
+return new;
+end;
+$$ language plpgsql security definer;
+
+-- trigger the handle_new_user_account() function every time a user is created
+drop trigger if exists new_account_on_profile_created on public.profile;
+create trigger new_account_on_profile_created
+after
+insert on public.profile for each row execute procedure public.handle_new_user_account();
+

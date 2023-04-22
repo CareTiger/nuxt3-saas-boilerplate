@@ -7,8 +7,8 @@ export const useUserStore = defineStore({
 	state: () => ({
 		id: null as Maybe<number>,
 		email: null as Maybe<string>,
+		displayName: null as Maybe<string>,
 		account: null as Maybe<Account>,
-		role: null as Maybe<string>,
 	}),
 	actions: {
 		async init() {
@@ -22,8 +22,8 @@ export const useUserStore = defineStore({
 				});
 				this.id = data.id;
 				this.email = data.email;
+				this.displayName = data.display_name;
 				this.account = data.account;
-				this.role = data.role;
 				useNotesStore().init(data.notes);
 			}
 		},
