@@ -32,7 +32,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "~/stores/user";
 import { useAppStore } from "@/stores/app";
 import { useNotesStore } from "~/stores/notes";
 const client = useSupabaseAuthClient();

@@ -1,24 +1,28 @@
-import { defineStore } from "pinia";
+import { defineStore, skipHydrate } from "pinia";
 
-export const useAppStore = defineStore({
-	id: "app-store",
-	state: () => ({
-		plans: [],
-	}),
-	actions: {
-		async init() {
-			console.log("app store init");
-			try {
-				this.plans = await $fetch("/api/v1/app/getPlans", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-					},
-				});
-			} catch (error) {
-				console.log(error);
-			}
-		},
-	},
-	getters: {},
+export const useAppStore = defineStore("app", () => {
+	// state
+	const plans = ref([]);
+
+	// actions
+	async function init() {
+		console.log("app store init");
+		try {
+			plans.value = await $fetch("/api/v1/app/getPlans", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	// getters
+
+	return {
+		plans,
+		init,
+	};
 });

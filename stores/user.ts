@@ -1,70 +1,54 @@
-import { defineStore } from "pinia";
+import { defineStore, skipHydrate } from "pinia";
+import { Account } from "~/types/global";
 import { useNotesStore } from "./notes";
-import { User, Account, Note, Maybe } from "~/types/global";
-import convertKeysToCamelCase from "~/stores/helperFunctions";
+import convertKeysToCamelCase from "~/utils";
 
-export const useUserStore = defineStore({
-	id: "user-store",
-	state: () => ({
-		id: null,
-		email: "",
-		displayName: "",
-		role: "",
-		account: <Account>{},
-	}),
-	actions: {
-		convertKeysToCamelCase(obj: any): any {
-			console.log(obj);
-			if (typeof obj !== "object" || obj === null) {
-				return obj;
-			}
+export const useUserStore = defineStore("user", () => {
+	// state
+	const id = ref(null);
+	const email = ref("");
+	const displayName = ref("");
+	const role = ref("");
+	const account = ref(<Account>{});
 
-			if (Array.isArray(obj)) {
-				return obj.map((item) => convertKeysToCamelCase(item));
-			}
-
-			const converted: any = {};
-			for (const key in obj) {
-				if (obj.hasOwnProperty(key)) {
-					const camelCaseKey = key.replace(/_\w/g, (match) =>
-						match[1].toUpperCase()
-					);
-					converted[camelCaseKey] = convertKeysToCamelCase(obj[key]);
-				}
-			}
-
-			return converted;
-		},
-
-		async init(): Promise<void> {
-			const supabaseUser = useSupabaseUser();
-			if (supabaseUser.value) {
-				const promise: Promise<any> = new Promise((resolve, reject) => {
-					$fetch("/api/v1/user/getProfile", {
-						method: "GET",
-						params: {
-							userUid: supabaseUser.value?.id,
-						},
+	// actions
+	async function init(): Promise<void> {
+		const supabaseUser = useSupabaseUser();
+		if (supabaseUser.value) {
+			const promise: Promise<any> = new Promise((resolve, reject) => {
+				$fetch("/api/v1/user/getProfile", {
+					method: "GET",
+					params: {
+						userUid: supabaseUser.value?.id,
+					},
+				})
+					.then((response) => {
+						const convertedData = convertKeysToCamelCase(response);
+						resolve(convertedData);
 					})
-						.then((response) => {
-							const convertedData =
-								convertKeysToCamelCase(response);
-							resolve(convertedData);
-						})
-						.catch((error) => {
-							reject(error);
-						});
-				});
-				const data = await promise;
-				console.log("camelCase data", data);
-				this.id = data.id;
-				this.email = data.email;
-				this.displayName = data.displayName;
-				this.role = data.role;
-				this.account = data.account;
-				useNotesStore().init(data.notes);
-			}
-		},
-	},
-	getters: {},
+					.catch((error) => {
+						reject(error);
+					});
+			});
+			const data = await promise;
+			console.log("camelCase data", data);
+			id.value = data.id;
+			email.value = data.email;
+			displayName.value = data.displayName;
+			role.value = data.role;
+			account.value = data.account;
+			useNotesStore().init(data.notes);
+		}
+	}
+
+	// getters
+
+	return {
+		id,
+		email,
+		displayName,
+		role,
+		account,
+		init,
+	};
 });
