@@ -60,6 +60,7 @@ Please don't hitch your wagon to this star just yet...
 -   [ ] Loose coupling between Plan and Account Features to allow ad-hoc account tweaks without creating custom plans
 -   [ ] Pricing page appropriately reacts to users with/without account and current plan.
 -   [ ] Plan features and Limits available in an object structure in Server methods and with method annotations or similar
+-   [ ] Pricing page enables appropriate styling for 'featured' plan and shows prices for all plans
 
 ### Stripe (Payments) Integration
 
