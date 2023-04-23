@@ -1,8 +1,15 @@
 <script setup lang="ts">
+import { useUserStore } from "~/stores/user";
 const user = useSupabaseUser();
+const userStore = useUserStore();
+
 watchEffect(() => {
 	if (user.value) {
-		navigateTo("/user/dashboard", { replace: true });
+		if (userStore.role === "ADMIN") {
+			navigateTo("/admin", { replace: true });
+		} else {
+			navigateTo("/user/dashboard", { replace: true });
+		}
 	}
 });
 </script>

@@ -2,30 +2,20 @@
 	<div>
 		<div class="flex flex-row justify-between">
 			<div>
-				<span><NuxtLink to="/">Nuxt 3 Boilerplate</NuxtLink></span>
+				<span><NuxtLink to="/">SAAS Boilerplate</NuxtLink></span>
 			</div>
 			<div class="flex space-x-4">
-				<span v-if="user"
-					><NuxtLink to="/user/dashboard">Dashboard</NuxtLink></span
-				>
-				<span v-if="user"
-					><NuxtLink to="/user/account">Account</NuxtLink></span
-				>
-				<span v-if="user"
-					><NuxtLink to="/user/notes">Notes</NuxtLink></span
-				>
+				<div v-if="user">
+					<AppHeaderUser v-if="userStore.role === 'USER'" />
+					<AppHeaderAdmin v-if="userStore.role === 'ADMIN'" />
+				</div>
 			</div>
 			<div class="flex flex-row space-x-4">
-				<span v-if="!user"
-					><NuxtLink to="/auth/signin">Sign In</NuxtLink></span
-				>
-				<span v-if="!user"
-					><NuxtLink to="/auth/signup">Sign Up</NuxtLink></span
-				>
+				<AppHeaderGuest v-if="!user" />
 				<span v-if="user"
 					><a href="#" @click.prevent="signout()">Sign out</a></span
 				>
-				<!-- <span v-if="user">logged in as: {{ user.email }}</span> -->
+				<span v-if="user">{{ user.email }}</span>
 			</div>
 		</div>
 		<hr />
