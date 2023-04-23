@@ -1,11 +1,7 @@
 --
 -- STORAGE BUCKET CREATION AND POLICIES
--- TODO how to drop and recreate the bucket
+-- TODO how to drop and recreate the bucket - this is not working
 --
--- if exists delete bucket saas;
--- if exists (select 1 from storage.buckets where id = 'saas') then
---   delete from storage.buckets where id = 'saas';
--- end if;
 
 -- -- create bucket saas;
 insert into storage.buckets (id, name) values ('saas', 'saas');
