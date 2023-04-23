@@ -64,6 +64,8 @@ model Plan {
     audience          String
     description       String
     features          String[]
+    featured          Boolean   @default(false)
+    price             Int
     accounts          Account[]
     max_notes         Int       @default(100)
     stripe_product_id String?

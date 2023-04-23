@@ -3,7 +3,10 @@ const prisma = new PrismaClient();
 async function main() {
 	const freeTrial = await prisma.plan.upsert({
 		where: { name: "Community Plan" },
-		update: {},
+		update: {
+			featured: false,
+			price: 0,
+		},
 		create: {
 			name: "Community Plan",
 			features: ["ADD_NOTES", "EDIT_NOTES", "VIEW_NOTES"],
@@ -12,11 +15,16 @@ async function main() {
 			description:
 				"This is a free trial plan. You can use it for 30 days. After that, you will be automatically downgraded to the Community Plan.", // TODO - change this
 			audience: "Everyone",
+			featured: false,
+			price: 0,
 		},
 	});
 	const basicPlan = await prisma.plan.upsert({
 		where: { name: "Basic Plan" },
-		update: {},
+		update: {
+			featured: true,
+			price: 10,
+		},
 		create: {
 			name: "Basic Plan",
 			features: [
@@ -30,11 +38,16 @@ async function main() {
 			description:
 				"This is a free trial plan. You can use it for 30 days. After that, you will be automatically downgraded to the Community Plan.",
 			audience: "Startups",
+			featured: true,
+			price: 10,
 		},
 	});
 	const premiumPlan = await prisma.plan.upsert({
 		where: { name: "Premium Plan" },
-		update: {},
+		update: {
+			featured: false,
+			price: 99,
+		},
 		create: {
 			name: "Premium Plan",
 			features: [
@@ -50,6 +63,8 @@ async function main() {
 			description:
 				"This is a free trial plan. You can use it for 30 days. After that, you will be automatically downgraded to the Community Plan.",
 			audience: "Enterprise",
+			featured: false,
+			price: 99,
 		},
 	});
 	console.log({ freeTrial, basicPlan, premiumPlan });
