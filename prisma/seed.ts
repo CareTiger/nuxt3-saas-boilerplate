@@ -2,10 +2,15 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 async function main() {
 	const freeTrial = await prisma.plan.upsert({
-		where: { name: "Free Trial" },
-		update: {},
+		where: { name: "Community Plan" },
+		update: {
+			name: "Community Plan",
+			features: ["ADD_NOTES", "EDIT_NOTES", "VIEW_NOTES"],
+			max_notes: 10,
+			stripe_product_id: "prod_NlWFbSngRFEXDe",
+		},
 		create: {
-			name: "Free Trial",
+			name: "Community Plan",
 			features: ["ADD_NOTES", "EDIT_NOTES", "VIEW_NOTES"],
 			max_notes: 10,
 			stripe_product_id: "prod_NlWFbSngRFEXDe",
