@@ -3,7 +3,6 @@ import { getRole } from "~/server/db/user";
 
 export default defineEventHandler(async (event) => {
 	const payload = getQuery(event);
-	console.log("get role api", payload);
 	if (!payload.user_uid)
 		return sendError(
 			event,
