@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { useNotesStore } from "./notes";
 import { User, Account, Note, Maybe } from "~/types/global";
+import convertKeysToCamelCase from "~/stores/helperFunctions";
 
 export const useUserStore = defineStore({
 	id: "user-store",
@@ -12,6 +13,29 @@ export const useUserStore = defineStore({
 		account: <Account>{},
 	}),
 	actions: {
+		convertKeysToCamelCase(obj: any): any {
+			console.log(obj);
+			if (typeof obj !== "object" || obj === null) {
+				return obj;
+			}
+
+			if (Array.isArray(obj)) {
+				return obj.map((item) => convertKeysToCamelCase(item));
+			}
+
+			const converted: any = {};
+			for (const key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					const camelCaseKey = key.replace(/_\w/g, (match) =>
+						match[1].toUpperCase()
+					);
+					converted[camelCaseKey] = convertKeysToCamelCase(obj[key]);
+				}
+			}
+
+			return converted;
+		},
+
 		async init(): Promise<void> {
 			const supabaseUser = useSupabaseUser();
 			if (supabaseUser.value) {
@@ -23,28 +47,22 @@ export const useUserStore = defineStore({
 						},
 					})
 						.then((response) => {
-							resolve(response);
+							const convertedData =
+								convertKeysToCamelCase(response);
+							resolve(convertedData);
 						})
 						.catch((error) => {
 							reject(error);
 						});
 				});
 				const data = await promise;
+				console.log("camelCase data", data);
 				this.id = data.id;
 				this.email = data.email;
-				this.displayName = data.display_name;
+				this.displayName = data.displayName;
 				this.role = data.role;
-				// account object
-				this.account.id = data.account.id;
-				this.account.planId = data.account.plan_id;
-				this.account.stripeCustomerId = data.account.stripe_customer_id;
-				this.account.stripeSubscriptionId =
-					data.account.stripe_subscription_id;
-				this.account.currentPeriodEnds =
-					data.account.current_period_ends;
-				// notes array
+				this.account = data.account;
 				useNotesStore().init(data.notes);
-				console.log(data);
 			}
 		},
 	},
