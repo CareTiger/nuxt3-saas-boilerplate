@@ -116,7 +116,11 @@ const handleStandardSignup = async () => {
 			email: email.value,
 			password: password.value,
 		});
-		if (error) throw error;
+		if (error) {
+			throw error;
+		} else {
+			alert("Check your email for the login link!");
+		}
 	} catch (error) {
 		alert(error);
 	} finally {

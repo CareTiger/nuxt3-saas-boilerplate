@@ -8,6 +8,7 @@ async function main() {
 			name: "Free Trial",
 			features: ["ADD_NOTES", "EDIT_NOTES", "VIEW_NOTES"],
 			max_notes: 10,
+			stripe_product_id: "prod_NlWFbSngRFEXDe",
 		},
 	});
 	const basicPlan = await prisma.plan.upsert({
