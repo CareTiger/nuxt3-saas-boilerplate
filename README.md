@@ -21,7 +21,7 @@ Please don't hitch your wagon to this star just yet...
 -   [x] Full list of available [providers](https://supabase.com/docs/guides/auth#providers)
 -   [x] User roles and permissions (admin, regular user, etc. roles defined in the [Prisma Schema](/prisma/schema.prisma))
 -   [x] User Email captured on initial login
--   [ ] reset password
+-   [x] reset password
 -   [ ] Initial plan and plan period controled via config to allow either a trial plan or a 'Community plan' for initial users
 -   [ ] Edit Account Name/bio etc from Account Page
 
@@ -50,7 +50,7 @@ Please don't hitch your wagon to this star just yet...
 
 ### Tailwind CSS & Icons & Fonts & Forms
 
--   [ ] Responsive Navbar
+-   [x] Responsive Navbar
 -   [x] Responsive footer
 -   [x] @fortawesome/fontawesome-free for icons
 -   [ ] Formkit
@@ -78,8 +78,8 @@ Please don't hitch your wagon to this star just yet...
 
 ### Look and Feel, Design System and Customisation
 
--   [ ] Very Crap default UI
--   [ ] Not Crap UI
+-   [x] Very Crap default UI
+-   [x] Not Crap UI
 -   [ ] Integrated Design system (Tailwind)
 -   [ ] Branding options (logo, color scheme, etc.)
 
