@@ -4,6 +4,17 @@
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
 	},
+	"scriptsComments": {
+		"SUPABASE COMMENTS": "*** START/STOP/GENERATE_TYPES ***",
+		"sb:start": "starts the supabase docker container",
+		"sb:stop": "stops the supabase docker container and creates a backup",
+		"sb:types": "creates data types for the supabase client",
+		"PRISMA COMMENTS": "*** META SCRIPTS ***",
+		"reset": "Resets the database and runs the prisma meta scripts",
+		"prisma": "Runs the privileges, rls, and functions/triggers scripts",
+		"prisma:realtime": "enables realtime on the notification table",
+		"prisma:storage": "Creates a storage bucket and adds a trigger to delete files when a row is deleted"
+	},
 	"scripts": {
 		"build": "nuxt build",
 		"dev": "nuxt dev",
@@ -21,17 +32,6 @@
 		"prisma:storage": "npx prisma db execute --file ./prisma/sql/storage.sql --schema ./prisma/schema.prisma",
 		"prisma:realtime": "npx prisma db execute --file ./prisma/sql/realtime.sql --schema ./prisma/schema.prisma",
 		"prisma:studio": "npx prisma studio --schema ./prisma/schema.prisma"
-	},
-	"scriptsComments": {
-		"SUPABASE COMMENTS": "*** START/STOP/GENERATE_TYPES ***",
-		"sb:start": "starts the supabase docker container",
-		"sb:stop": "stops the supabase docker container and creates a backup",
-		"sb:types": "creates data types for the supabase client",
-		"PRISMA COMMENTS": "*** META SCRIPTS ***",
-		"reset": "Resets the database and runs the prisma meta scripts",
-		"prisma": "Runs the privileges, rls, and functions/triggers scripts",
-		"prisma:realtime": "enables realtime on the notification table",
-		"prisma:storage": "Creates a storage bucket and adds a trigger to delete files when a row is deleted"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "^0.4.1",
