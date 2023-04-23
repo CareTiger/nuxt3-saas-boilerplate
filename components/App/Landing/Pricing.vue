@@ -21,9 +21,11 @@
 			<div
 				class="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
 			>
-				<!-- community    -->
 				<div
 					class="flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 lg:mt-8 lg:rounded-r-none"
+					:class="{
+						'ring-2 ring-indigo-600': plan.featured === true,
+					}"
 					v-for="plan in appStore.plans"
 				>
 					<div>
@@ -32,7 +34,7 @@
 								id="tier-freelancer"
 								class="text-lg font-semibold leading-8 text-gray-900"
 							>
-								{{ plan.audience }}
+								{{ plan.name }}
 							</h3>
 						</div>
 						<p class="mt-4 text-sm leading-6 text-gray-600">
@@ -40,8 +42,12 @@
 						</p>
 						<p class="mt-6 flex items-baseline gap-x-1">
 							<span
-								class="text-4xl font-bold tracking-tight text-gray-900"
-								>{{ plan.name }}</span
+								class="text-5xl font-bold tracking-tight text-gray-900"
+								>$ {{ plan.price }}</span
+							>
+							<span
+								class="text-sm font-semibold leading-6 text-gray-600"
+								>/month</span
 							>
 						</p>
 						<ul
@@ -49,21 +55,12 @@
 							class="mt-8 space-y-3 text-sm leading-6 text-gray-600"
 						>
 							<li
-								class="flex gap-x-3"
+								class="flex flex-row items-center gap-x-3"
 								v-for="feature in plan.features"
 							>
-								<svg
-									class="h-6 w-5 flex-none text-indigo-600"
-									viewBox="0 0 20 20"
-									fill="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-										clip-rule="evenodd"
-									/>
-								</svg>
+								<i
+									class="fa-solid fa-check text-indigo-600"
+								></i>
 								{{ feature }}
 							</li>
 						</ul>
@@ -72,6 +69,9 @@
 						href="#"
 						aria-describedby="tier-freelancer"
 						class="mt-8 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300"
+						:class="{
+							'bg-indigo-600 text-white': plan.featured === true,
+						}"
 						>Buy plan</a
 					>
 				</div>

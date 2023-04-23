@@ -32,7 +32,7 @@ const handleForgotPassword = async () => {
 	try {
 		loading.value = true;
 		const { error } = await client.auth.resetPasswordForEmail(email.value, {
-			redirectTo: "http://localhost:3000/reset",
+			redirectTo: "http://localhost:3000/auth/reset",
 		});
 		if (error) throw error;
 		alert("Check your email for the login link!");
