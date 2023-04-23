@@ -7,7 +7,12 @@ export default defineNuxtConfig({
 		shim: false,
 	},
 
-	modules: ["@nuxtjs/supabase", "@pinia/nuxt", "@nuxtjs/tailwindcss"],
+	modules: [
+		"@nuxtjs/supabase",
+		"@pinia/nuxt",
+		"@nuxtjs/tailwindcss",
+		"@nuxt/content",
+	],
 
 	runtimeConfig: {
 		stripeSecretKey: process.env.STRIPE_SECRET_KEY,
