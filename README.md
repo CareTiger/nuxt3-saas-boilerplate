@@ -48,10 +48,13 @@ Please don't hitch your wagon to this star just yet...
 -   [ ] Blog with CRUD functionality using nuxt/content
 -   [ ] Social media sharing buttons
 
-### Tailwind CSS
+### Tailwind CSS & Icons & Fonts & Forms
 
 -   [ ] Responsive Navbar
 -   [ ] Responsive footer
+-   [ ] @fortawesome/fontawesome-free for icons
+-   [ ] Formkit
+-   [ ] Google fonts
 
 ### Plans and Pricing
 
