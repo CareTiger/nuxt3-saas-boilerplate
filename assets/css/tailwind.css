@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+primary color - bg-indigo-500
+secondary color - bg-indigo-300
+tertiary color - bg-indigo-100
+background and text- zinc
+*/
+
+a.router-link-exact-active {
+	@apply font-extrabold text-indigo-500;
+}
+
+@font-face {
+	font-family: "Robot";
+	src: url("../fonts/Roboto-Regular.ttf");
+}
+
 input[type="text"] {
 	@apply border border-gray-600 rounded-md w-full;
 }
