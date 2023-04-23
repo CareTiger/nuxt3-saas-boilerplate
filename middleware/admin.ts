@@ -1,20 +1,17 @@
 export default defineNuxtRouteMiddleware(async (to) => {
 	const user = useSupabaseUser();
-	console.log("Getting role");
+
 	try {
-		console.log(user.value?.id);
-		const { data } = await useFetch("/api/v1/user/getRole", {
+		const { data, error } = await useFetch("/api/v1/user/getRole", {
 			method: "GET",
 			query: {
-				user_id: user.value?.id,
+				user_uid: user.value?.id,
 			},
 		});
-		console.log(data.value);
+		if (data.value?.role !== "ADMIN") {
+			return "/dashboard";
+		}
 	} catch (error) {
 		console.log(error);
 	}
-
-	// if (userRole.role !== "ADMIN") {
-	// 	return "/dashboard";
-	// }
 });

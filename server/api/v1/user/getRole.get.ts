@@ -3,7 +3,7 @@ import { getRole } from "~/server/db/user";
 
 export default defineEventHandler(async (event) => {
 	const payload = getQuery(event);
-	console.log(payload);
+	console.log("get role api", payload);
 	if (!payload.user_uid)
 		return sendError(
 			event,
@@ -14,7 +14,6 @@ export default defineEventHandler(async (event) => {
 		);
 	try {
 		const user = await getRole(String(payload.user_uid));
-		// TODO - if uid is not found, return 404 with a message
 		if (!user) {
 			return sendError(
 				event,
@@ -32,7 +31,8 @@ export default defineEventHandler(async (event) => {
 			event,
 			createError({
 				statusCode: 500,
-				message: "Error getting profile. Maybe database is unavailble.",
+				message:
+					"Error getting profile. Maybe database is unavailable?",
 			})
 		);
 	}
