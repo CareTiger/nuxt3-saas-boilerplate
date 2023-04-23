@@ -17,18 +17,19 @@ Please don't hitch your wagon to this star just yet...
 
 ### User Management
 
--   [ ] User authentication via Supabase including Social Signon (e.g. google, github) Email/Password and Magic Link
--   [ ] Full list of available [providers](https://supabase.com/docs/guides/auth#providers)
--   [ ] User roles and permissions (admin, regular user, etc. roles defined in the [Prisma Schema](/prisma/schema.prisma))
--   [ ] User Email captured on initial login
--   [ ] Initial plan and plan period controled via config to allow either a trial plan or a 'No Plan' for initial users
--   [ ] Edit Account Name from Account Page
+-   [x] User authentication via Supabase including Social Signon (e.g. google, github) Email/Password and Magic Link
+-   [x] Full list of available [providers](https://supabase.com/docs/guides/auth#providers)
+-   [x] User roles and permissions (admin, regular user, etc. roles defined in the [Prisma Schema](/prisma/schema.prisma))
+-   [x] User Email captured on initial login
+-   [ ] reset password
+-   [ ] Initial plan and plan period controled via config to allow either a trial plan or a 'Community plan' for initial users
+-   [ ] Edit Account Name/bio etc from Account Page
 
 ### Schema and DB Management
 
--   [ ] Prisma based Schema Management
--   [ ] Supabase integration for DB
--   [ ] DB Seed Script to setup plan information including Plan and Stripe Product information
+-   [x] Prisma based Schema Management
+-   [x] Supabase integration for DB
+-   [x] DB Seed Script to setup plan information including Plan and Stripe Product information
 
 ### Config Management and Env integration
 
@@ -36,10 +37,21 @@ Please don't hitch your wagon to this star just yet...
 -   [x] [Env](/.env_example) keys for Supabase and Stripe
 -   [ ] Config Switches for free trial - If you want a 'free trial period' set initialPlanName to an appropriate plan name in the DB and initialPlanActiveMonths to a positive value. If you don't want a free trial, set initialPlanName to an appropriate 'No Plan' plan in the DB and set the initialPlanActiveMonths to -1.
 
-### Multi-Modal State Management
+### Multi-Modal State Management (route rules)
 
 -   [ ] SPA type pages (e.g. [Dashboard](/pages/dashboard.vue)) - postgresql(supabase) -> Prisma -> Service Layer for Business Logic -> Pinia -> UI
 -   [ ] SSR type pages (e.g. [Note](/pages/notes/[note_id].vue)) - postgresql(supabase) -> Prisma -> Service Layer for Business Logic -> UI
+-   [ ] SSR type pages (e.g. [Blog](/pages/notes/[note_id].vue)) - nuxt/content -> UI
+
+### Blog
+
+-   [ ] Blog with CRUD functionality using nuxt/content
+-   [ ] Social media sharing buttons
+
+### Tailwind CSS
+
+-   [ ] Responsive Navbar
+-   [ ] Responsive footer
 
 ### Plans and Pricing
 
@@ -83,8 +95,9 @@ Please don't hitch your wagon to this star just yet...
 
 ### Testing
 
--   [ ] Unit tests for server functions
+-   [ ] Unit tests for server functions using vitest/playwright
 -   [ ] Integration tests around subscription scenarios
+-   [ ] unlighthouse tests for page performance
 
 ## Externals Setup
 
