@@ -9,7 +9,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
 			},
 		});
 		if (data.value?.role !== "ADMIN") {
-			return "/user/dashboard";
+			navigateTo("/user/dashboard", { replace: true });
+		} else {
+			navigateTo("/admin", { replace: true });
 		}
 	} catch (error) {
 		console.log(error);

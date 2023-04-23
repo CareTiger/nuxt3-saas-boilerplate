@@ -5,6 +5,8 @@ const userStore = useUserStore();
 
 watchEffect(() => {
 	if (user.value) {
+		// TODO - This is not working
+		console.log("INDEX.VUE", userStore.role);
 		if (userStore.role === "ADMIN") {
 			navigateTo("/admin", { replace: true });
 		} else {
