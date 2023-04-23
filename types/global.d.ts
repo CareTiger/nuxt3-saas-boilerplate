@@ -1,11 +1,20 @@
 export type Maybe<T> = T | null | undefined;
 
+export type User = {
+	id: number;
+	email: string;
+	displayName: string | null;
+	role: string;
+	account: Account;
+	notes: Note[];
+};
+
 export type Account = {
 	id: number;
-	planId: number | null;
-	stripeCustomerId: string | null;
-	stripeSubscriptionId: string | null;
-	currentPeriodEnds: string | null;
+	planId: number;
+	stripeCustomerId: string;
+	stripeSubscriptionId: string;
+	currentPeriodEnds: string;
 };
 
 export type Note = {

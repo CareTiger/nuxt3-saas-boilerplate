@@ -34,10 +34,13 @@
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user";
 import { useAppStore } from "@/stores/app";
+import { useNotesStore } from "~/stores/notes";
 const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
 const userStore = useUserStore();
 const appStore = useAppStore();
+const notesStore = useNotesStore();
+
 onMounted(async () => {
 	await userStore.init();
 	await appStore.init();
@@ -45,8 +48,10 @@ onMounted(async () => {
 
 async function signout() {
 	await client.auth.signOut();
+	appStore.$reset;
 	if (userStore) {
-		userStore.signout();
+		userStore.$reset;
+		notesStore.$reset;
 	}
 	navigateTo("/auth/signin", { replace: true });
 }

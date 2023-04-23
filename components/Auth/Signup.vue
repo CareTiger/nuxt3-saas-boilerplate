@@ -38,8 +38,8 @@
 
 				<p>
 					By proceeding, I agree to the
-					<NuxtLink to="/privacy">Privacy Statement</NuxtLink> and
-					<NuxtLink to="/terms">Terms of Service</NuxtLink>.
+					<NuxtLink to="/app/privacy">Privacy Statement</NuxtLink> and
+					<NuxtLink to="/app/terms">Terms of Service</NuxtLink>.
 				</p>
 
 				<button
@@ -63,8 +63,8 @@
 				/>
 				<p>
 					By proceeding, I agree to the
-					<NuxtLink to="/privacy">Privacy Statement</NuxtLink> and
-					<NuxtLink to="/terms">Terms of Service</NuxtLink>.
+					<NuxtLink to="/app/privacy">Privacy Statement</NuxtLink> and
+					<NuxtLink to="/app/terms">Terms of Service</NuxtLink>.
 				</p>
 
 				<button type="submit" :disabled="loading">
