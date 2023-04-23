@@ -7,7 +7,12 @@ export const getPlans = async () => {
 			name: true,
 			features: true,
 			max_notes: true,
+			description: true,
+			audience: true,
 			// TODO add pricing
+		},
+		orderBy: {
+			id: "asc",
 		},
 	});
 };

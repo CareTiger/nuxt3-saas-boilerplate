@@ -3,17 +3,15 @@ const prisma = new PrismaClient();
 async function main() {
 	const freeTrial = await prisma.plan.upsert({
 		where: { name: "Community Plan" },
-		update: {
-			name: "Community Plan",
-			features: ["ADD_NOTES", "EDIT_NOTES", "VIEW_NOTES"],
-			max_notes: 10,
-			stripe_product_id: "prod_NlWFbSngRFEXDe",
-		},
+		update: {},
 		create: {
 			name: "Community Plan",
 			features: ["ADD_NOTES", "EDIT_NOTES", "VIEW_NOTES"],
 			max_notes: 10,
 			stripe_product_id: "prod_NlWFbSngRFEXDe",
+			description:
+				"This is a free trial plan. You can use it for 30 days. After that, you will be automatically downgraded to the Community Plan.", // TODO - change this
+			audience: "Everyone",
 		},
 	});
 	const basicPlan = await prisma.plan.upsert({
@@ -29,6 +27,9 @@ async function main() {
 			],
 			max_notes: 20,
 			stripe_product_id: "prod_NkVdizfgRmo4f3",
+			description:
+				"This is a free trial plan. You can use it for 30 days. After that, you will be automatically downgraded to the Community Plan.",
+			audience: "Startups",
 		},
 	});
 	const premiumPlan = await prisma.plan.upsert({
@@ -46,6 +47,9 @@ async function main() {
 			],
 			max_notes: 200,
 			stripe_product_id: "prod_NkVeWzKa9k5053",
+			description:
+				"This is a free trial plan. You can use it for 30 days. After that, you will be automatically downgraded to the Community Plan.",
+			audience: "Enterprise",
 		},
 	});
 	console.log({ freeTrial, basicPlan, premiumPlan });

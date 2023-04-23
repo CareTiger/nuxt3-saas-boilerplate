@@ -1,3 +1,9 @@
+<template>
+	<div>
+		<AppLandingHero />
+		<AppLandingPricing />
+	</div>
+</template>
 <script setup lang="ts">
 import { useUserStore } from "~/stores/user";
 const user = useSupabaseUser();
@@ -15,9 +21,3 @@ watchEffect(() => {
 	}
 });
 </script>
-<template>
-	<div>
-		<AppLandingHero />
-		<AppLandingPricing />
-	</div>
-</template>

@@ -61,6 +61,8 @@ model Note {
 model Plan {
     id                Int       @id @default(autoincrement())
     name              String    @unique
+    audience          String
+    description       String
     features          String[]
     accounts          Account[]
     max_notes         Int       @default(100)

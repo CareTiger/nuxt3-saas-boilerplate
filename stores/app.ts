@@ -22,7 +22,7 @@ export const useAppStore = defineStore("app", () => {
 	// getters
 
 	return {
-		plans,
+		plans: skipHydrate(plans),
 		init,
 	};
 });
