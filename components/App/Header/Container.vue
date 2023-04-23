@@ -18,7 +18,6 @@
 				<span v-if="user">{{ user.email }}</span>
 			</div>
 		</div>
-		<hr />
 	</div>
 </template>
 <script setup lang="ts">
