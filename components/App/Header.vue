@@ -6,19 +6,21 @@
 			</div>
 			<div class="flex space-x-4">
 				<span v-if="user"
-					><NuxtLink to="/dashboard">Dashboard</NuxtLink></span
+					><NuxtLink to="/user/dashboard">Dashboard</NuxtLink></span
 				>
 				<span v-if="user"
-					><NuxtLink to="/account">Account</NuxtLink></span
+					><NuxtLink to="/user/account">Account</NuxtLink></span
 				>
-				<span v-if="user"><NuxtLink to="/notes">Notes</NuxtLink></span>
+				<span v-if="user"
+					><NuxtLink to="/user/notes">Notes</NuxtLink></span
+				>
 			</div>
 			<div class="flex flex-row space-x-4">
 				<span v-if="!user"
-					><NuxtLink to="/signin">Sign In</NuxtLink></span
+					><NuxtLink to="/auth/signin">Sign In</NuxtLink></span
 				>
 				<span v-if="!user"
-					><NuxtLink to="/signup">Sign Up</NuxtLink></span
+					><NuxtLink to="/auth/signup">Sign Up</NuxtLink></span
 				>
 				<span v-if="user"
 					><a href="#" @click.prevent="signout()">Sign out</a></span
@@ -46,6 +48,6 @@ async function signout() {
 	if (userStore) {
 		userStore.signout();
 	}
-	navigateTo("/signin", { replace: true });
+	navigateTo("/auth/signin", { replace: true });
 }
 </script>

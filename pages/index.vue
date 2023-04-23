@@ -2,7 +2,7 @@
 const user = useSupabaseUser();
 watchEffect(() => {
 	if (user.value) {
-		navigateTo("/dashboard", { replace: true });
+		navigateTo("/user/dashboard", { replace: true });
 	}
 });
 </script>
