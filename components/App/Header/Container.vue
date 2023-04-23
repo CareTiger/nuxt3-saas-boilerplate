@@ -1,26 +1,67 @@
 <template>
-	<div>
-		<div class="flex flex-row justify-between">
-			<div>
-				<span><NuxtLink to="/">SAAS Boilerplate</NuxtLink></span>
-			</div>
+	<div class="px-8 py-6 flex flex-row items-center justify-between">
+		<NuxtLink to="/">
+			<img
+				class="h-12 w-12 rounded-full object-cover"
+				src="/ven.jpg"
+				alt="avatar"
+			/>
+		</NuxtLink>
+		<div class="hidden md:block">
 			<div class="flex space-x-4">
 				<div v-if="user">
-					<AppHeaderUser v-if="userStore.role === 'USER'" />
 					<AppHeaderAdmin v-if="userStore.role === 'ADMIN'" />
+					<AppHeaderUser v-else />
 				</div>
 			</div>
-			<div class="flex flex-row space-x-4">
-				<AppHeaderGuest v-if="!user" />
-				<span v-if="user"
-					><a href="#" @click.prevent="signout()">Sign out</a></span
+		</div>
+		<!-- Mobile Navbar -->
+		<AppBaseModal :modalActive="modalActive" @close-modal="toggleModal">
+			<div class="w-full">
+				<div
+					class="flex flex-row items-center justify-between py-3 border-b border-zinc-300"
 				>
-				<span v-if="user">{{ user.email }}</span>
+					<h2 class="text-sm uppercase">Navigation</h2>
+				</div>
+				<ul class="">
+					<li class="py-3 border-b border-zinc-300">
+						<NuxtLink to="/about" @click.prevent="toggleModal"
+							>About</NuxtLink
+						>
+					</li>
+					<li class="py-3 border-b border-zinc-300">
+						<NuxtLink to="/articles" @click.prevent="toggleModal"
+							>Articles</NuxtLink
+						>
+					</li>
+					<li class="pt-3 pb-4">
+						<NuxtLink to="/projects" @click.prevent="toggleModal"
+							>Projects</NuxtLink
+						>
+					</li>
+				</ul>
+			</div>
+		</AppBaseModal>
+		<div class="flex items-center space-x-2">
+			<AppHeaderGuest v-if="!user" />
+			<span v-if="user"
+				><a href="#" @click.prevent="signout()">Sign out</a></span
+			>
+			<!-- <span v-if="user">{{ user.email }}</span> -->
+			<div
+				class="md:hidden flex flex-row items-center border border-zinc-100 rounded-full shadow py-2 px-6 cursor-pointer"
+				@click="toggleModal"
+			>
+				<span class="text-zinc-500 text-sm mr-2">Menu</span>
+				<span class="text-sm">
+					<i class="fa-solid fa-bars-staggered"></i>
+				</span>
 			</div>
 		</div>
 	</div>
 </template>
-<script setup lang="ts">
+<script setup>
+const modalActive = ref(false);
 import { useUserStore } from "~/stores/user";
 import { useAppStore } from "@/stores/app";
 import { useNotesStore } from "~/stores/notes";
@@ -44,4 +85,7 @@ async function signout() {
 	}
 	navigateTo("/auth/signin", { replace: true });
 }
+const toggleModal = () => {
+	modalActive.value = !modalActive.value;
+};
 </script>
