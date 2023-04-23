@@ -110,7 +110,7 @@ const handleStandardLogin = async () => {
 watchEffect(async () => {
 	if (user.value) {
 		await userStore.init();
-		navigateTo("/dashboard", { replace: true });
+		navigateTo("/user/dashboard", { replace: true });
 	}
 });
 </script>

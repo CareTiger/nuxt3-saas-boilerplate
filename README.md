@@ -41,15 +41,6 @@ Please don't hitch your wagon to this star just yet...
 -   [ ] SPA type pages (e.g. [Dashboard](/pages/dashboard.vue)) - postgresql(supabase) -> Prisma -> Service Layer for Business Logic -> Pinia -> UI
 -   [ ] SSR type pages (e.g. [Note](/pages/notes/[note_id].vue)) - postgresql(supabase) -> Prisma -> Service Layer for Business Logic -> UI
 
-### Multi User Accounts (Teams)
-
--   [ ] Allow users to upgrade their accounts fron individual accounts to multi-user accounts (Teams).
--   [ ] Allow users to switch between Teams and view/edit data from the selected Team.
--   [ ] All features, billing and limits is controlled at the Account (Team) level (not the user level)
--   [ ] Gen/Regen an invite link to allow users to join a team
--   [ ] Team administrators and owners can accept pending invites
--   [ ] Team administrators and owners can administer the permissions (roles) of other team members on the Accounts page
-
 ### Plans and Pricing
 
 -   [ ] Manage multiple Plans each with specific Feature flags and Plan limits
@@ -73,7 +64,7 @@ Please don't hitch your wagon to this star just yet...
 
 -   [ ] Very Crap default UI
 -   [ ] Not Crap UI
--   [ ] Integrated Design system (Bootstrap? Tailwind?)
+-   [ ] Integrated Design system (Tailwind)
 -   [ ] Branding options (logo, color scheme, etc.)
 
 ### Demo Software (Notes)
@@ -94,10 +85,6 @@ Please don't hitch your wagon to this star just yet...
 
 -   [ ] Unit tests for server functions
 -   [ ] Integration tests around subscription scenarios
-
-## Special Mention
-
-This https://blog.checklyhq.com/building-a-multi-tenant-saas-data-model/ Article by https://twitter.com/tim_nolet was my inspiration for the user/account/subscription schema. Tim was also generous with his time and answered some of my stoopid questions on the https://www.reddit.com/r/SaaS/ Subreddit.
 
 ## Externals Setup
 
@@ -124,8 +111,8 @@ This solution uses Supabase for Auth and to provide a DB. In addition to Magic L
 This solution uses Stripe for Subscription payments.
 
 1. Go to [Stripe](https://stripe.com) and setup your business (Free Tier is fine to start)
-2. Create 2 products ('Team Plan' and 'Individual Plan') each with a single price and note the Product ID's and Price ID's
-3. Edit the [seed.ts](/prisma/seed.ts) file and replace the stripe_product_id values with the Product ID's from 2)
+2. Create 3 products ('Community plan', 'Basic Plan' and 'Premium Plan') each with a single price and note the Product ID's and Price ID's
+3. Edit the [seed.ts](/prisma/seed.ts) file and replace the stripe_product_id values with the Product ID's)
 
 ```typescript
     create: {
