@@ -1,8 +1,18 @@
 <template>
-	<div class="flex flex-col h-screen w-full">
-		<AppHeaderContainer />
-		<NuxtPage class="flex-1" />
-		<AppFooter />
+	<div
+		class="flex flex-col min-h-screen w-full mx-auto sm:w-4/5 md:max-w-7xl bg-white text-zinc-800"
+	>
+		<header>
+			<nav>
+				<AppHeaderContainer />
+			</nav>
+		</header>
+		<main class="flex-1">
+			<NuxtPage />
+		</main>
+		<footer>
+			<AppFooter />
+		</footer>
 	</div>
 </template>
 <script setup lang="ts">
