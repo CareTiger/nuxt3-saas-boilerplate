@@ -20,7 +20,7 @@
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare",
+		"postinstall": "nuxt prepare && prisma generate",
 		"sb:stop": "npx env-cmd npx supabase stop --backup",
 		"sb:start": "npx env-cmd npx supabase start",
 		"sb:types": "npx supabase gen types typescript --local tb > ./types/db_types.ts",
