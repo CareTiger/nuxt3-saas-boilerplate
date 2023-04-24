@@ -1,7 +1,6 @@
 import { defineStore, skipHydrate } from "pinia";
 import { Account } from "~/types/global";
 import { useNotesStore } from "./notes";
-import convertKeysToCamelCase from "~/utils";
 
 export const useUserStore = defineStore("user", () => {
 	// state
@@ -23,7 +22,8 @@ export const useUserStore = defineStore("user", () => {
 					},
 				})
 					.then((response) => {
-						const convertedData = convertKeysToCamelCase(response);
+						const convertedData =
+							useConvertKeysToCamelCase(response);
 						resolve(convertedData);
 					})
 					.catch((error) => {

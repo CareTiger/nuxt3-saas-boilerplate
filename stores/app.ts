@@ -1,6 +1,6 @@
 import { defineStore, skipHydrate } from "pinia";
 import { Plan } from "@/types/global";
-import convertKeysToCamelCase from "~/utils";
+import { useConvertKeysToCamelCase } from "@/composables/useHelpers";
 
 export const useAppStore = defineStore("app", () => {
 	// state
@@ -19,7 +19,7 @@ export const useAppStore = defineStore("app", () => {
 			if (!data) {
 				throw new Error("Error getting plans");
 			}
-			plans.value = convertKeysToCamelCase(data);
+			plans.value = useConvertKeysToCamelCase(data);
 		} catch (error) {
 			console.log(error);
 		}

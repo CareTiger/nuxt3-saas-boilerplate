@@ -9,7 +9,7 @@
 		</NuxtLink>
 		<div class="hidden md:block">
 			<div class="flex space-x-4">
-				<div v-if="user">
+				<div v-if="supabaseUser">
 					<AppHeaderAdmin v-if="userStore.role === 'ADMIN'" />
 					<AppHeaderUser v-else />
 				</div>
@@ -43,11 +43,11 @@
 			</div>
 		</AppBaseModal>
 		<div class="flex items-center space-x-2">
-			<AppHeaderGuest v-if="!user" />
-			<span v-if="user"
+			<AppHeaderGuest v-if="!supabaseUser" />
+			<span v-if="supabaseUser"
 				><a href="#" @click.prevent="signout()">Sign out</a></span
 			>
-			<!-- <span v-if="user">{{ user.email }}</span> -->
+			<span v-if="supabaseUser">{{ supabaseUser.email }}</span>
 			<div
 				class="md:hidden flex flex-row items-center border border-zinc-100 rounded-full shadow py-2 px-6 cursor-pointer"
 				@click="toggleModal"
@@ -66,7 +66,7 @@ import { useUserStore } from "~/stores/user";
 import { useAppStore } from "@/stores/app";
 import { useNotesStore } from "~/stores/notes";
 const supabaseAuthClient = useSupabaseAuthClient();
-const user = useSupabaseUser();
+const supabaseUser = useSupabaseUser();
 const userStore = useUserStore();
 const appStore = useAppStore();
 const notesStore = useNotesStore();
