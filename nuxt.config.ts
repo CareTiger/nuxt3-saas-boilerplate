@@ -38,6 +38,14 @@ export default defineNuxtConfig({
 		"@nuxtjs/tailwindcss",
 		"@nuxt/content",
 	],
+	routeRules: {
+		// Static page generated on-demand once
+		"/articles/**": { static: true },
+		// Render these routes with SPA
+		"/admin/**": { ssr: false },
+		// Add cors headers
+		"/api/v1/**": { cors: true },
+	},
 
 	runtimeConfig: {
 		stripeSecretKey: process.env.STRIPE_SECRET_KEY,
