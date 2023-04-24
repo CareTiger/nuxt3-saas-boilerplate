@@ -18,7 +18,7 @@ Please don't hitch your wagon to this star just yet...
 ### User Management
 
 -   [x] User authentication via Supabase including Social Signon (e.g. google, github) Email/Password and Magic Link
--   [x] Full list of available [providers](https://supabase.com/docs/guides/auth#providers)
+-   [ ] Full list of available [providers](https://supabase.com/docs/guides/auth#providers)
 -   [x] User roles and permissions (admin, regular user, etc. roles defined in the [Prisma Schema](/prisma/schema.prisma))
 -   [x] User Email captured on initial login
 -   [x] reset password
