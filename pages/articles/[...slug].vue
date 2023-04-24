@@ -52,5 +52,13 @@ useServerSeoMeta({
 	twitterTitle: data.title,
 	twitterDescription: data.description,
 	twitterImage: data.img,
+	linkedinTitle: data.title,
+	linkedinDescription: data.description,
+	linkedinImage: data.img,
+	linkedinUrl: "https://saas-boilerplate-kappa.vercel.app/" + data.url,
+	instagramTitle: data.title,
+	instagramDescription: data.description,
+	instagramImage: data.img,
+	instagramUrl: "https://saas-boilerplate-kappa.vercel.app/" + data.url,
 });
 </script>
