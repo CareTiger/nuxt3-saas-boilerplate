@@ -1,5 +1,6 @@
 ---
 title: How to write a good article
+url: /articles/such-a-good-title
 description: The fact is, regardless of how naturally writing comes to you, there’s more to knowing how to write an article than typing a few paragraphs into a document. If you want to consistently create good, well-researched, and engaging content that performs well in search engines, you’ll more than likely need a bit of help.
 img: https://images.unsplash.com/photo-1571723141898-68dfa1e50431?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60
 featured: false

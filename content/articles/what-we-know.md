@@ -1,5 +1,6 @@
 ---
 title: What we know
+url: /articles/what-we-know
 description: The strong force holds together quarks, the fundamental particles that make up the protons and neutrons of the atomic nucleus, and further holds together protons and neutrons to form atomic nuclei. As such it is responsible for the underlying stability of matter.
 img: https://images.unsplash.com/photo-1588065394015-68bf7e40738d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80
 featured: true

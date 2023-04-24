@@ -39,4 +39,18 @@
 <script setup>
 const route = useRoute();
 const data = await queryContent(route.fullPath).findOne();
+useServerSeoMeta({
+	ogTitle: data.title,
+	ogDescription: data.description,
+	ogImage: data.img,
+	ogUrl: "https://saas-boilerplate-kappa.vercel.app/" + data.url,
+	ogType: "article",
+	ogSiteName: "Site Name",
+	twitterCard: "summary_large_image",
+	twitterSite: "https://saas-boilerplate-kappa.vercel.app/" + data.url,
+	twitterCreator: "@creator",
+	twitterTitle: data.title,
+	twitterDescription: data.description,
+	twitterImage: data.img,
+});
 </script>
