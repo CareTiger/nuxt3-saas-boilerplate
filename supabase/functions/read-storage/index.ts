@@ -22,9 +22,9 @@ serve(async (req) => {
 		// Create a Supabase client with the Auth context of the logged in user.
 		const supabaseClient = createClient(
 			// Supabase API URL - env var exported by default.
-			Deno.env.get("SUPABASE_URL") ?? "",
+			Deno.env.get("NUXT_SUPABASE_URL") ?? "",
 			// Supabase API ANON KEY - env var exported by default.
-			Deno.env.get("SUPABASE_KEY") ?? "",
+			Deno.env.get("NUXT_SUPABASE_KEY") ?? "",
 			// Create client with Auth context of the user that called the function.
 			// This way your row-level-security (RLS) policies are applied.
 			{
@@ -38,7 +38,7 @@ serve(async (req) => {
 
 		const { data, error } = await supabaseClient.storage
 			.from("saas")
-			.download("users/017b69f2-e951-4b4c-9b22-1fa3505014cc/discord.png");
+			.download("with_token.jpg");
 		if (error) throw error;
 
 		// file contents are returned as a blob, we can convert it to utf-8 text by calling text() method.
