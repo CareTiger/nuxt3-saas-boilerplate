@@ -114,7 +114,11 @@ const handleStandardLogin = async () => {
 watchEffect(async () => {
 	if (user.value) {
 		await userStore.init();
-		navigateTo("/user/dashboard", { replace: true });
+		if (userStore.role === "ADMIN") {
+			navigateTo("/admin", { replace: true });
+		} else {
+			navigateTo("/user/dashboard", { replace: true });
+		}
 	}
 });
 </script>
