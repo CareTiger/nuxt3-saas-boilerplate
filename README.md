@@ -46,10 +46,14 @@ Please don't hitch your wagon to this star just yet...
 ### Blog
 
 -   [x] Blog with CRUD functionality using nuxt/content
--   [ ] SEO + Social media ready links and sharing buttons (vue-social-sharing)
+-   [ ] Social media optimization and sharing buttons (vue-social-sharing)
+-   [ ] SEO Optimization - nuxt-seo-kit (https://github.com/harlan-zw/nuxt-seo-kit)
+-   [ ] Image optimization (https://nuxt.com/modules/image)
+-   [ ] robots.txt (https://nuxt.com/modules/robots)
 
-### Tailwind CSS & Icons & Fonts & Forms
+### Tailwind CSS & Icons & Fonts & Forms (UnoCSS is the future)
 
+-   [x] setup Tailwind CSS
 -   [x] Responsive Navbar
 -   [x] Responsive footer
 -   [x] @fortawesome/fontawesome-free for icons
