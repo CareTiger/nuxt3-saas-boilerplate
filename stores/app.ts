@@ -25,8 +25,6 @@ export const useAppStore = defineStore("app", () => {
 		}
 	}
 
-	// getters
-
 	return {
 		plans,
 		init,

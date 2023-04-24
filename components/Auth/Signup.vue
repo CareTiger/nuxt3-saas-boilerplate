@@ -77,7 +77,7 @@
 			<p>or sign up with</p>
 
 			<button
-				@click="client.auth.signInWithOAuth({ provider: 'github' })"
+				@click="supabaseAuthClient.auth.signInWithOAuth({ provider: 'github' })"
 			>
 				Github
 			</button>
@@ -85,8 +85,8 @@
 	</div>
 </template>
 <script setup lang="ts">
-const user = useSupabaseUser();
-const client = useSupabaseAuthClient();
+const supabaseUser = useSupabaseUser();
+const supabaseAuthClient = useSupabaseAuthClient();
 
 const loading = ref(false);
 const email = ref("");
@@ -97,7 +97,7 @@ const confirmPassword = ref("");
 const handleOtpLogin = async () => {
 	try {
 		loading.value = true;
-		const { error } = await client.auth.signInWithOtp({
+		const { error } = await supabaseAuthClient.auth.signInWithOtp({
 			email: emailOTP.value,
 		});
 		if (error) throw error;
@@ -112,7 +112,7 @@ const handleOtpLogin = async () => {
 const handleStandardSignup = async () => {
 	try {
 		loading.value = true;
-		const { data, error } = await client.auth.signUp({
+		const { data, error } = await supabaseAuthClient.auth.signUp({
 			email: email.value,
 			password: password.value,
 		});
@@ -129,7 +129,7 @@ const handleStandardSignup = async () => {
 };
 
 watchEffect(() => {
-	if (user.value) {
+	if (supabaseUser.value) {
 		navigateTo("/user/dashboard", { replace: true });
 	}
 });

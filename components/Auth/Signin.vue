@@ -67,7 +67,7 @@
 			<p>or sign in with</p>
 
 			<button
-				@click="supabase.auth.signInWithOAuth({ provider: 'github' })"
+				@click="supabaseAuthClient.auth.signInWithOAuth({ provider: 'github' })"
 			>
 				Github
 			</button>
@@ -76,8 +76,8 @@
 </template>
 <script setup lang="ts">
 import { useUserStore } from "~/stores/user";
-const user = useSupabaseUser();
-const supabase = useSupabaseAuthClient();
+const supabaseUser = useSupabaseUser();
+const supabaseAuthClient = useSupabaseAuthClient();
 const userStore = useUserStore();
 const loading = ref(false);
 const email = ref("");
@@ -86,7 +86,7 @@ const password = ref("");
 const handleOtpLogin = async () => {
 	try {
 		loading.value = true;
-		const { error } = await supabase.auth.signInWithOtp({
+		const { error } = await supabaseAuthClient.auth.signInWithOtp({
 			email: emailOTP.value,
 		});
 		if (error) throw error;
@@ -100,7 +100,7 @@ const handleOtpLogin = async () => {
 const handleStandardLogin = async () => {
 	try {
 		loading.value = true;
-		const { error } = await supabase.auth.signInWithPassword({
+		const { error } = await supabaseAuthClient.auth.signInWithPassword({
 			email: email.value,
 			password: password.value,
 		});
@@ -112,7 +112,7 @@ const handleStandardLogin = async () => {
 	}
 };
 watchEffect(async () => {
-	if (user.value) {
+	if (supabaseUser.value) {
 		await userStore.init();
 		if (userStore.role === "ADMIN") {
 			navigateTo("/admin", { replace: true });

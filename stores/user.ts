@@ -40,21 +40,6 @@ export const useUserStore = defineStore("user", () => {
 		}
 	}
 
-	// doesnt work
-	// async function init(): Promise<void> {
-	// 	const user = useSupabaseUser();
-	// 	if (!user.value) return;
-
-	// 	const response = await $fetch("/api/v1/user/getProfile", {
-	// 		method: "GET",
-	// 		params: {
-	// 			userUid: user.value?.id,
-	// 		},
-	// 	});
-	// 	const data = await response.json();
-	// }
-	// getters
-
 	return {
 		id,
 		email,

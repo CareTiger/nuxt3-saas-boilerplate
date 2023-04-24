@@ -36,7 +36,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-const client = useSupabaseAuthClient();
+const supabaseAuthClient = useSupabaseAuthClient();
 
 const loading = ref(false);
 const password = ref("");
@@ -45,7 +45,7 @@ const confirmPassword = ref("");
 const handleResetPassword = async () => {
 	try {
 		loading.value = true;
-		const { error } = await client.auth.updateUser({
+		const { error } = await supabaseAuthClient.auth.updateUser({
 			password: password.value,
 		});
 		if (error) throw error;

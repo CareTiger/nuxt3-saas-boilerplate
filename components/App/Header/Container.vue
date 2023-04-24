@@ -65,7 +65,7 @@ const modalActive = ref(false);
 import { useUserStore } from "~/stores/user";
 import { useAppStore } from "@/stores/app";
 import { useNotesStore } from "~/stores/notes";
-const client = useSupabaseAuthClient();
+const supabaseAuthClient = useSupabaseAuthClient();
 const user = useSupabaseUser();
 const userStore = useUserStore();
 const appStore = useAppStore();
@@ -77,7 +77,7 @@ onMounted(async () => {
 });
 
 async function signout() {
-	await client.auth.signOut();
+	await supabaseAuthClient.auth.signOut();
 	appStore.$reset;
 	if (userStore) {
 		userStore.$reset;
