@@ -7,7 +7,6 @@ export const useAppStore = defineStore("app", () => {
 
 	// actions
 	async function init() {
-		console.log("app store init");
 		try {
 			plans.value = await $fetch("/api/v1/app/getPlans", {
 				method: "GET",

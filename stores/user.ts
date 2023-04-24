@@ -31,7 +31,6 @@ export const useUserStore = defineStore("user", () => {
 					});
 			});
 			const data = await promise;
-			console.log("camelCase data", data);
 			id.value = data.id;
 			email.value = data.email;
 			displayName.value = data.displayName;
