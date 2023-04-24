@@ -80,6 +80,10 @@ Please don't hitch your wagon to this star just yet...
 -   [] Support basic (customer.subscription) flows for Subscription payments via Webhook
 -   [] Support additional Stripe flows for things like failed payments, imminent subscription expiry (send email?) etc.....
 
+### A/B testing and analytics
+
+-   [] Posthog integration for analytics
+
 ### Support
 
 -   [ ] Help desk support (ticketing system, live chat, etc.)
@@ -89,6 +93,7 @@ Please don't hitch your wagon to this star just yet...
 
 -   [x] Very Crap default UI
 -   [x] Not Crap UI
+-   [ ] Awesome UI
 -   [ ] Integrated Design system (Tailwind)
 -   [ ] Branding options (logo, color scheme, etc.)
 
