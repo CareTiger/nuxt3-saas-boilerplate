@@ -1,10 +1,10 @@
 import _ from "lodash";
 
-export const useSortArticlesByDate = (data) => {
+export const useSortArticlesByDate = (data: any): any => {
 	return _.orderBy(data, ["updatedAt"], ["desc"]);
 };
 
-export const useConvertDate = (date) => {
+export const useConvertDate = (date: Date) => {
 	const newDate = new Date(date);
 	return newDate.toLocaleDateString("en-US", {
 		year: "numeric",

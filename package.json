@@ -6,14 +6,16 @@
 	},
 	"scriptsComments": {
 		"SUPABASE COMMENTS": "*** START/STOP/GENERATE_TYPES ***",
+		"sb:restart": "reboots the supabase docker container",
 		"sb:start": "starts the supabase docker container",
 		"sb:stop": "stops the supabase docker container and creates a backup",
 		"sb:types": "creates data types for the supabase client",
+		"sb:serve": "serves edge functions locally using .env.local",
 		"PRISMA COMMENTS": "*** META SCRIPTS ***",
 		"reset": "Resets the database and runs the prisma meta scripts",
-		"prisma": "Runs the privileges, rls, and functions/triggers scripts",
+		"prisma": "meta script that Runs the privileges, rls, and functions/triggers scripts",
 		"prisma:realtime": "enables realtime on the notification table",
-		"prisma:storage": "Creates a storage bucket and adds a trigger to delete files when a row is deleted"
+		"prisma:storage": "Creates a storage bucket and adds a policies to the bucket"
 	},
 	"scripts": {
 		"build": "nuxt build",
@@ -23,6 +25,7 @@
 		"postinstall": "nuxt prepare && prisma generate",
 		"sb:stop": "npx env-cmd npx supabase stop --backup",
 		"sb:start": "npx env-cmd npx supabase start",
+		"sb:restart": "npm run sb:stop && npm run sb:start",
 		"sb:types": "npx supabase gen types typescript --local tb > ./types/db_types.ts",
 		"sb:serve": "supabase functions serve --env-file ./supabase/.env.local",
 		"reset": " npx prisma db push && npm run prisma && npx prisma db seed",
@@ -52,6 +55,7 @@
 	},
 	"dependencies": {
 		"@pinia/nuxt": "^0.4.9",
+		"lodash": "^4.17.21",
 		"stripe": "^12.2.0",
 		"zod": "^3.21.4"
 	}
