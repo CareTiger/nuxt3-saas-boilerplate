@@ -23,3 +23,15 @@ export type Note = {
 	title: string;
 	content: string;
 };
+
+export type Plan = {
+	audience: string;
+	description: string;
+	featured: boolean;
+	features: string[] | null;
+	id: number;
+	maxNotes: number;
+	name: string;
+	price: number;
+	stripeProductId: string | null;
+};

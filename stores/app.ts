@@ -1,4 +1,5 @@
 import { defineStore, skipHydrate } from "pinia";
+import { Plan } from "@/types/global";
 
 export const useAppStore = defineStore("app", () => {
 	// state
@@ -22,7 +23,7 @@ export const useAppStore = defineStore("app", () => {
 	// getters
 
 	return {
-		plans: skipHydrate(plans),
+		plans,
 		init,
 	};
 });
