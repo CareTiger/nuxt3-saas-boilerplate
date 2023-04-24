@@ -35,7 +35,9 @@
 		"prisma:triggers": "npx prisma db execute --file ./prisma/sql/triggers.sql --schema ./prisma/schema.prisma",
 		"prisma:storage": "npx prisma db execute --file ./prisma/sql/storage.sql --schema ./prisma/schema.prisma",
 		"prisma:realtime": "npx prisma db execute --file ./prisma/sql/realtime.sql --schema ./prisma/schema.prisma",
-		"prisma:studio": "npx prisma studio --schema ./prisma/schema.prisma"
+		"prisma:studio": "npx prisma studio --schema ./prisma/schema.prisma",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
 		"@nuxt/content": "^2.6.0",
