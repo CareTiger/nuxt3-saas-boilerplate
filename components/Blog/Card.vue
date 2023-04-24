@@ -1,8 +1,6 @@
 <template>
-	<div class="rounded-lg p-2 md:p-6 hover:bg-zinc-100 cursor-pointer">
-		<p
-			class="text-zinc-400 border-l md:border-none border-zinc-400 pl-4 md:pl-0 mb-4 text-xs"
-		>
+	<div class="rounded-lg hover:bg-zinc-100 cursor-pointer">
+		<p class="text-zinc-400 text-xs">
 			{{ useConvertDate(article.updatedAt) }}
 		</p>
 		<h2 class="font-bold text-zinc-800">

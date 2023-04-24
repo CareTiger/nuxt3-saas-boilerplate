@@ -41,12 +41,12 @@ Please don't hitch your wagon to this star just yet...
 
 -   [ ] SPA type pages (e.g. [Dashboard](/pages/dashboard.vue)) - postgresql(supabase) -> Prisma -> Service Layer for Business Logic -> Pinia -> UI
 -   [ ] SSR type pages (e.g. [Note](/pages/notes/[note_id].vue)) - postgresql(supabase) -> Prisma -> Service Layer for Business Logic -> UI
--   [ ] SSR type pages (e.g. [Blog](/pages/notes/[note_id].vue)) - nuxt/content -> UI
+-   [ ] Static pages (e.g. [Blog](/articles/**)) - nuxt/content -> UI
 
 ### Blog
 
 -   [x] Blog with CRUD functionality using nuxt/content
--   [ ] Social media sharing buttons
+-   [ ] SEO + Social media ready links and sharing buttons (vue-social-sharing)
 
 ### Tailwind CSS & Icons & Fonts & Forms
 
@@ -55,6 +55,11 @@ Please don't hitch your wagon to this star just yet...
 -   [x] @fortawesome/fontawesome-free for icons
 -   [ ] Formkit
 -   [x] Google fonts
+
+### Modals and toasts
+
+-   [ ] Modals using vue-final-modal
+-   [ ] Toasts using vue-toastification
 
 ### Plans and Pricing
 

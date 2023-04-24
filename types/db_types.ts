@@ -34,160 +34,146 @@ export interface Database {
   }
   public: {
     Tables: {
-      _prisma_migrations: {
-        Row: {
-          applied_steps_count: number
-          checksum: string
-          finished_at: string | null
-          id: string
-          logs: string | null
-          migration_name: string
-          rolled_back_at: string | null
-          started_at: string
-        }
-        Insert: {
-          applied_steps_count?: number
-          checksum: string
-          finished_at?: string | null
-          id: string
-          logs?: string | null
-          migration_name: string
-          rolled_back_at?: string | null
-          started_at?: string
-        }
-        Update: {
-          applied_steps_count?: number
-          checksum?: string
-          finished_at?: string | null
-          id?: string
-          logs?: string | null
-          migration_name?: string
-          rolled_back_at?: string | null
-          started_at?: string
-        }
-      }
       account: {
         Row: {
-          created: string
-          current_period_ends: string
-          features: string[] | null
+          created_at: string
+          current_period_ends: string | null
           id: number
-          max_notes: number
-          name: string
           plan_id: number
-          plan_name: string
-          profileId: number
-          stripe_customer_id: string
-          stripe_subscription_id: string
-          updated: string
+          profile_id: number
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          updated_at: string
         }
         Insert: {
-          created?: string
-          current_period_ends?: string
-          features?: string[] | null
+          created_at?: string
+          current_period_ends?: string | null
           id?: number
-          max_notes?: number
-          name: string
           plan_id?: number
-          plan_name: string
-          profileId: number
-          stripe_customer_id: string
-          stripe_subscription_id: string
-          updated?: string
+          profile_id: number
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
         }
         Update: {
-          created?: string
-          current_period_ends?: string
-          features?: string[] | null
+          created_at?: string
+          current_period_ends?: string | null
           id?: number
-          max_notes?: number
-          name?: string
           plan_id?: number
-          plan_name?: string
-          profileId?: number
-          stripe_customer_id?: string
-          stripe_subscription_id?: string
-          updated?: string
+          profile_id?: number
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
         }
       }
       note: {
         Row: {
           content: string
-          created: string
+          created_at: string
           id: number
-          profileId: number
+          profile_id: number
           title: string
-          updated: string
+          updated_at: string
         }
         Insert: {
           content: string
-          created?: string
+          created_at?: string
           id?: number
-          profileId: number
+          profile_id: number
           title: string
-          updated?: string
+          updated_at?: string
         }
         Update: {
           content?: string
-          created?: string
+          created_at?: string
           id?: number
-          profileId?: number
+          profile_id?: number
           title?: string
-          updated?: string
+          updated_at?: string
         }
       }
       plan: {
         Row: {
-          created: string
+          audience: string
+          created_at: string
+          description: string
+          featured: boolean
           features: string[] | null
           id: number
           max_notes: number
           name: string
+          price: number
           stripe_product_id: string | null
-          updated: string
+          updated_at: string
         }
         Insert: {
-          created?: string
+          audience: string
+          created_at?: string
+          description: string
+          featured?: boolean
           features?: string[] | null
           id?: number
           max_notes?: number
           name: string
+          price: number
           stripe_product_id?: string | null
-          updated?: string
+          updated_at?: string
         }
         Update: {
-          created?: string
+          audience?: string
+          created_at?: string
+          description?: string
+          featured?: boolean
           features?: string[] | null
           id?: number
           max_notes?: number
           name?: string
+          price?: number
           stripe_product_id?: string | null
-          updated?: string
+          updated_at?: string
         }
       }
       profile: {
         Row: {
-          created: string
+          bio: string | null
+          created_at: string
+          display_name: string | null
+          dob: string | null
           email: string
+          first_name: string | null
           id: number
+          last_name: string | null
+          profile_location: string | null
           role: Database["public"]["Enums"]["ROLE"]
-          updated: string
+          updated_at: string
           user_uid: string
         }
         Insert: {
-          created?: string
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          dob?: string | null
           email: string
+          first_name?: string | null
           id?: number
+          last_name?: string | null
+          profile_location?: string | null
           role?: Database["public"]["Enums"]["ROLE"]
-          updated?: string
+          updated_at?: string
           user_uid: string
         }
         Update: {
-          created?: string
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          dob?: string | null
           email?: string
+          first_name?: string | null
           id?: number
+          last_name?: string | null
+          profile_location?: string | null
           role?: Database["public"]["Enums"]["ROLE"]
-          updated?: string
+          updated_at?: string
           user_uid?: string
         }
       }

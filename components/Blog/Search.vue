@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<input
-			class="w-full md:max-w-xs rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
+			class="w-full rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
 			type="search"
 			name="search"
 			id="emsearchail"
