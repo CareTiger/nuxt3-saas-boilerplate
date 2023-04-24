@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
 	app: {
 		head: {
-			title: "Nuxt App",
+			title: "Nuxt SAAS Boilerplate",
 			meta: [
 				{ charset: "utf-8" },
 				{
@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 				},
 			],
 		},
+		pageTransition: { name: "page", mode: "out-in" },
 	},
 
 	typescript: {
