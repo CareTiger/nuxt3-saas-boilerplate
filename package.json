@@ -41,7 +41,7 @@
 		"@prisma/client": "^4.13.0",
 		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.9",
-		"@types/node": "^18.15.12",
+		"@types/node": "^18.16.0",
 		"env-cmd": "^10.1.0",
 		"nuxt": "^3.4.2",
 		"prisma": "^4.13.0",
@@ -51,7 +51,7 @@
 	},
 	"dependencies": {
 		"@pinia/nuxt": "^0.4.9",
-		"stripe": "^12.1.1",
+		"stripe": "^12.2.0",
 		"zod": "^3.21.4"
 	}
 }
