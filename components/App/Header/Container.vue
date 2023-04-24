@@ -23,7 +23,7 @@
 				>
 					<h2 class="text-sm uppercase">Navigation</h2>
 				</div>
-				<ul class="">
+				<!-- <ul class="">
 					<li class="py-3 border-b border-zinc-300">
 						<NuxtLink to="/about" @click.prevent="toggleModal"
 							>About</NuxtLink
@@ -39,16 +39,23 @@
 							>Projects</NuxtLink
 						>
 					</li>
-				</ul>
+				</ul> -->
+				<div v-if="supabaseUser">
+					<AppHeaderAdmin v-if="userStore.role === 'ADMIN'" />
+					<AppHeaderUser v-else />
+				</div>
 			</div>
 		</AppBaseModal>
 		<div class="flex items-center space-x-2">
 			<AppHeaderGuest v-if="!supabaseUser" />
-			<span v-if="supabaseUser"
-				><a href="#" @click.prevent="signout()">Sign out</a></span
-			>
-			<span v-if="supabaseUser">{{ supabaseUser.email }}</span>
-			<div
+			<div class="hidden md:block" v-if="supabaseUser">
+				<a href="#" @click.prevent="signout()">Sign out</a>
+			</div>
+			<div class="md:hidden" @click="toggleModal">
+				<i class="fa-solid fa-bars-staggered"></i>
+			</div>
+			<!-- <span v-if="supabaseUser">{{ supabaseUser.email }}</span> -->
+			<!-- <div
 				class="md:hidden flex flex-row items-center border border-zinc-100 rounded-full shadow py-2 px-6 cursor-pointer"
 				@click="toggleModal"
 			>
@@ -56,7 +63,7 @@
 				<span class="text-sm">
 					<i class="fa-solid fa-bars-staggered"></i>
 				</span>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
