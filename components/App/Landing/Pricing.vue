@@ -22,7 +22,7 @@
 				class="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
 			>
 				<div
-					class="flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 lg:mt-8 lg:rounded-r-none"
+					class="flex flex-col justify-between rounded-3xl bg-white m-2 p-8 ring-1 ring-gray-200 xl:p-10 lg:mt-8"
 					:class="{
 						'ring-2 ring-indigo-600': plan.featured === true,
 					}"
