@@ -29,6 +29,7 @@ const client = useSupabaseAuthClient();
 const loading = ref(false);
 const email = ref("");
 const handleForgotPassword = async () => {
+	// TODO the redirect URL is not working
 	try {
 		loading.value = true;
 		// const { error } = await client.auth.resetPasswordForEmail(email.value, {
