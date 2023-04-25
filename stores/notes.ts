@@ -4,10 +4,10 @@ import { Note } from "~/types/global";
 export const useNotesStore = defineStore("notes", () => {
 	// state
 	const notes = ref([] as Note[]);
-
+	const persist = ref(true);
 	// actions
-	async function init(notes: Note[]): Promise<void> {
-		notes = notes;
+	async function init(notesData: Note[]) {
+		notes.value = notesData;
 	}
 
 	// getters

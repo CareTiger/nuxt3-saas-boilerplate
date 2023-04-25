@@ -44,6 +44,7 @@
 		"@nuxt/devtools": "^0.4.2",
 		"@nuxtjs/supabase": "^0.3.5",
 		"@nuxtjs/tailwindcss": "^6.6.6",
+		"@pinia-plugin-persistedstate/nuxt": "^1.1.1",
 		"@prisma/client": "^4.13.0",
 		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.9",
