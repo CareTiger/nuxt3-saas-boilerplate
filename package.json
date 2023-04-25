@@ -60,6 +60,7 @@
 		"@pinia/nuxt": "^0.4.9",
 		"lodash": "^4.17.21",
 		"stripe": "^12.2.0",
+		"vue-toastification": "^2.0.0-rc.5",
 		"zod": "^3.21.4"
 	}
 }

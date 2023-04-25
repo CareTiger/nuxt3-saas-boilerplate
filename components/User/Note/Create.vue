@@ -62,6 +62,7 @@
 	</div>
 </template>
 <script setup lang="ts">
+import { useToast } from "vue-toastification";
 import { useUserStore } from "~/stores/user";
 
 const title = ref("");
@@ -70,6 +71,7 @@ const userStore = useUserStore();
 
 // emitter for the form. let the parent know to rerender the notes
 const emits = defineEmits(["onSubmit", "noteCreated"]);
+const toast = useToast();
 
 const handleSubmit = async () => {
 	try {
@@ -83,8 +85,14 @@ const handleSubmit = async () => {
 			}),
 		});
 		emits("noteCreated", true);
+		toast.success("Added to Bookmarks", {
+			timeout: 2000,
+		});
 	} catch (error) {
 		console.error("Oops! there was an error", error);
+		toast.error("Something went wrong", {
+			timeout: 2000,
+		});
 	}
 };
 </script>
