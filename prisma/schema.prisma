@@ -2,13 +2,15 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["multiSchema"]
 }
 
 datasource db {
     provider          = "postgresql"
     url               = env("DATABASE_URL")
     shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+    schemas           = ["public", "saas"]
     // Can't use same values for url and shadowDatabaseUrl
 }
 
@@ -29,6 +31,7 @@ model Profile {
     updated_at       DateTime  @default(now())
 
     @@map("profile")
+    @@schema("saas")
 }
 
 model Account {
@@ -44,6 +47,7 @@ model Account {
     updated_at             DateTime  @default(now())
 
     @@map("account")
+    @@schema("saas")
 }
 
 model Note {
@@ -56,6 +60,7 @@ model Note {
     updated_at DateTime @default(now())
 
     @@map("note")
+    @@schema("saas")
 }
 
 model Plan {
@@ -73,9 +78,12 @@ model Plan {
     updated_at        DateTime  @default(now())
 
     @@map("plan")
+    @@schema("saas")
 }
 
 enum ROLE {
     ADMIN
     USER
+
+    @@schema("saas")
 }

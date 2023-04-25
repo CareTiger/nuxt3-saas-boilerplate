@@ -2,30 +2,30 @@
 -- RESET RLS POLICIES ON RELEVANT TABLES
 -- ENABLE RLS ON ALL TABLES AND CREATE RLS POLICIES FOR EACH TABLE
 --
--- table public.account
-alter table public.account
+-- table saas.account
+alter table saas.account
 enable row level security;
 
--- table public.note
-alter table public.note
+-- table saas.note
+alter table saas.note
 enable row level security;
 
--- CREATE POLICY "Enable CRUD on public.note for users based on user_uid"
--- ON public.note
+-- CREATE POLICY "Enable CRUD on saas.note for users based on user_uid"
+-- ON saas.note
 -- FOR ALL USING (
 --   auth.uid()::text = user_uid
 -- );
 
--- table public.profile
-alter table public.profile
+-- table saas.profile
+alter table saas.profile
 enable row level security;
 
--- CREATE POLICY "Enable CRUD on public.profile for users based on user_uid"
--- ON public.profile
+-- CREATE POLICY "Enable CRUD on saas.profile for users based on user_uid"
+-- ON saas.profile
 -- FOR ALL USING (
 --   auth.uid()::text = user_uid
 -- );
 
--- table public.plan
-alter table public.plan
+-- table saas.plan
+alter table saas.plan
 enable row level security;
