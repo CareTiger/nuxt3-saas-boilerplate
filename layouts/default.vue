@@ -10,8 +10,12 @@
 		<main class="flex-1">
 			<NuxtPage />
 		</main>
+		<ModalsContainer />
 		<footer>
 			<AppFooter />
 		</footer>
 	</div>
 </template>
+<script setup lang="ts">
+import { ModalsContainer } from "vue-final-modal";
+</script>

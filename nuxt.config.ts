@@ -64,6 +64,7 @@ export default defineNuxtConfig({
 	tailwindcss: {
 		cssPath: "~/assets/css/tailwind.css",
 	},
+	css: ["vue-final-modal/style.css"],
 	devtools: {
 		// Enable devtools (default: true)
 		enabled: true,
