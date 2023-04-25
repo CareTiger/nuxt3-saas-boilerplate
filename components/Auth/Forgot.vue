@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col space-y-6">
-		<div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<h2>
 				Enter the email address associated with your account, and we’ll
 				email you a link to reset your password.

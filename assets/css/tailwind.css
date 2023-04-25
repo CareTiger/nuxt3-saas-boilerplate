@@ -19,13 +19,13 @@ a.router-link-exact-active {
 }
 
 input[type="text"] {
-	@apply border border-gray-600 rounded-md w-full;
+	@apply border border-slate-600 rounded-md w-full;
 }
 input[type="email"] {
-	@apply border border-gray-600 rounded-md w-full;
+	@apply border border-slate-600 rounded-md w-full;
 }
 input[type="password"] {
-	@apply border border-gray-600 rounded-md w-full;
+	@apply border border-slate-600 rounded-md w-full;
 }
 button {
 	@apply bg-indigo-500 text-white px-2 py-2 rounded-md w-full;

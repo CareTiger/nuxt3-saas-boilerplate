@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col space-y-6">
-		<div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<form @submit.prevent="handleStandardLogin">
 				<div class="flex flex-col space-y-6">
 					<div class="w-full">
@@ -37,7 +37,7 @@
 			</form>
 		</div>
 
-		<div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<form @submit.prevent="handleOtpLogin">
 				<div class="flex flex-col space-y-6">
 					<div>
@@ -63,7 +63,7 @@
 			</form>
 		</div>
 
-		<!-- <div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<!-- <div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<p>or sign in with</p>
 
 			<button

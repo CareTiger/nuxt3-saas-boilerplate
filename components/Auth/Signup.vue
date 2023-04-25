@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col space-y-6">
-		<div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<form
 				class="flex flex-col space-y-6"
 				@submit.prevent="handleStandardSignup"
@@ -51,7 +51,7 @@
 			</form>
 		</div>
 
-		<div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<form @submit.prevent="handleOtpLogin">
 				<label for="email">Email:</label>
 				<input
@@ -73,7 +73,7 @@
 			</form>
 		</div>
 
-		<!-- <div class="max-w-md mx-auto border border-gray-200 p-4 w-full">
+		<!-- <div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
 			<p>or sign up with</p>
 
 			<button
