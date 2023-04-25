@@ -3,6 +3,7 @@ import { getNotesByProfileId } from "~/server/db/notes";
 
 export default defineEventHandler(async (event) => {
 	const payload = getQuery(event);
+
 	if (!payload.profile_id)
 		return sendError(
 			event,
