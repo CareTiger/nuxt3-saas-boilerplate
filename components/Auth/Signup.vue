@@ -79,11 +79,4 @@ const handleStandardSignup = async () => {
 		loading.value = false;
 	}
 };
-
-// TODO Enable email confirmation
-watchEffect(() => {
-	if (supabaseUser.value) {
-		navigateTo("/user/dashboard", { replace: true });
-	}
-});
 </script>
