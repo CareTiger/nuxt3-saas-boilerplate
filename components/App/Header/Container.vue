@@ -3,7 +3,7 @@
 		<NuxtLink to="/">
 			<img
 				class="h-12 w-12 rounded-full object-cover"
-				src="/ven.jpg"
+				src="/logo.png"
 				alt="avatar"
 			/>
 		</NuxtLink>
