@@ -2,7 +2,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 	const user = useSupabaseUser();
 
 	try {
-		const { data, error } = await useFetch("/api/v1/user/getRole", {
+		const { data, error } = await useFetch("/api/v1/user/role", {
 			method: "GET",
 			query: {
 				user_uid: user.value?.id,

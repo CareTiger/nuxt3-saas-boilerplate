@@ -15,7 +15,7 @@ export const useUserStore = defineStore("user", () => {
 		const supabaseUser = useSupabaseUser();
 		if (supabaseUser.value) {
 			const promise: Promise<any> = new Promise((resolve, reject) => {
-				$fetch("/api/v1/user/getProfile", {
+				$fetch("/api/v1/user/profile", {
 					method: "GET",
 					params: {
 						userUid: supabaseUser.value?.id,

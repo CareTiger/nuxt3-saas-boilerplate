@@ -9,7 +9,7 @@ export const useAppStore = defineStore("app", () => {
 	// actions
 	async function init(): Promise<void> {
 		try {
-			const response = await $fetch("/api/v1/app/getPlans", {
+			const response = await $fetch("/api/v1/app/plans", {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
