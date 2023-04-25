@@ -50,38 +50,6 @@
 				</button>
 			</form>
 		</div>
-
-		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
-			<form @submit.prevent="handleOtpLogin">
-				<label for="email">Email:</label>
-				<input
-					class="inputField"
-					type="email"
-					id="emailOTP"
-					placeholder="Your email"
-					v-model="emailOTP"
-				/>
-				<p>
-					By proceeding, I agree to the
-					<NuxtLink to="/app/privacy">Privacy Statement</NuxtLink> and
-					<NuxtLink to="/app/terms">Terms of Service</NuxtLink>.
-				</p>
-
-				<button type="submit" :disabled="loading">
-					Sign Up using Magic Link
-				</button>
-			</form>
-		</div>
-
-		<!-- <div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
-			<p>or sign up with</p>
-
-			<button
-				@click="supabaseAuthClient.auth.signInWithOAuth({ provider: 'github' })"
-			>
-				Github
-			</button>
-		</div> -->
 	</div>
 </template>
 <script setup lang="ts">
@@ -90,24 +58,8 @@ const supabaseAuthClient = useSupabaseAuthClient();
 
 const loading = ref(false);
 const email = ref("");
-const emailOTP = ref("");
 const password = ref("");
 const confirmPassword = ref("");
-
-const handleOtpLogin = async () => {
-	try {
-		loading.value = true;
-		const { error } = await supabaseAuthClient.auth.signInWithOtp({
-			email: emailOTP.value,
-		});
-		if (error) throw error;
-		alert("Check your email for the login link!");
-	} catch (error) {
-		alert(error);
-	} finally {
-		loading.value = false;
-	}
-};
 
 const handleStandardSignup = async () => {
 	try {
@@ -128,6 +80,7 @@ const handleStandardSignup = async () => {
 	}
 };
 
+// TODO Enable email confirmation
 watchEffect(() => {
 	if (supabaseUser.value) {
 		navigateTo("/user/dashboard", { replace: true });

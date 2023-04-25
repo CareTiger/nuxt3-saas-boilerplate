@@ -1,24 +1,15 @@
 <template>
-	<div class="flex flex-col space-y-6">
+	<div>
 		<div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
-			<form @submit.prevent="handleStandardLogin">
+			<form @submit.prevent="handleOtpLogin">
 				<div class="flex flex-col space-y-6">
-					<div class="w-full">
-						<label for="email">Email:</label>
+					<div>
+						<label for="emailOTP">Email:</label>
 						<input
 							type="email"
-							id="email"
+							id="emailOTP"
 							placeholder="Your email"
-							v-model="email"
-						/>
-					</div>
-					<div>
-						<label for="password">Password:</label>
-						<input
-							type="password"
-							id="password"
-							placeholder="Password"
-							v-model="password"
+							v-model="emailOTP"
 						/>
 					</div>
 					<p>
@@ -27,44 +18,30 @@
 						and
 						<NuxtLink to="/app/terms">Terms of Service</NuxtLink>.
 					</p>
-					<p>
-						<NuxtLink to="/auth/forgot"
-							>Forgot your password?</NuxtLink
-						>
-					</p>
-					<button type="submit" :disabled="loading">Sign In</button>
+
+					<button type="submit" :disabled="loading">
+						Sign In using Magic Link
+					</button>
 				</div>
 			</form>
 		</div>
-
-		<!-- <div class="max-w-md mx-auto border border-slate-200 p-4 w-full">
-			<p>or sign in with</p>
-
-			<button
-				@click="supabaseAuthClient.auth.signInWithOAuth({ provider: 'github' })"
-			>
-				Github
-			</button>
-		</div> -->
 	</div>
 </template>
 <script setup lang="ts">
 import { useUserStore } from "~/stores/user";
+const loading = ref(false);
+const emailOTP = ref("");
 const supabaseUser = useSupabaseUser();
 const supabaseAuthClient = useSupabaseAuthClient();
 const userStore = useUserStore();
-const loading = ref(false);
-const email = ref("");
-const password = ref("");
-
-const handleStandardLogin = async () => {
+const handleOtpLogin = async () => {
 	try {
 		loading.value = true;
-		const { error } = await supabaseAuthClient.auth.signInWithPassword({
-			email: email.value,
-			password: password.value,
+		const { error } = await supabaseAuthClient.auth.signInWithOtp({
+			email: emailOTP.value,
 		});
 		if (error) throw error;
+		alert("Check your email for the login link!");
 	} catch (error) {
 		alert(error);
 	} finally {
