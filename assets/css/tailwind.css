@@ -34,5 +34,5 @@ button[type="submit"] {
 	@apply bg-indigo-500 text-white px-2 py-2 rounded-md;
 }
 a {
-	@apply text-indigo-500;
+	@apply text-slate-500;
 }
