@@ -16,7 +16,7 @@ export const getNotesByProfileId = async (profile_id: number) => {
 };
 
 // create a function to add a note for a user
-export const addNote = async (
+export const createNote = async (
 	profile_id: number,
 	title: string,
 	content: string
