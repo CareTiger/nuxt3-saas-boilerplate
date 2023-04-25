@@ -4,7 +4,7 @@
 			<div
 				id="base-modal"
 				v-show="modalActive"
-				class="absolute w-full bg-zinc-600/75 h-screen top-0 left-0 flex justify-center px-8 z-10"
+				class="absolute w-full bg-slate-600/75 h-screen top-0 left-0 flex justify-center px-8 z-10"
 				@click.self="$emit('close-modal')"
 			>
 				<Transition name="modal-inner">

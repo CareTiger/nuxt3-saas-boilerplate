@@ -19,17 +19,17 @@
 		<AppBaseModal :modalActive="modalActive" @close-modal="toggleModal">
 			<div class="w-full">
 				<div
-					class="flex flex-row items-center justify-between py-3 border-b border-zinc-300"
+					class="flex flex-row items-center justify-between py-3 border-b border-slate-300"
 				>
 					<h2 class="text-sm uppercase">Navigation</h2>
 				</div>
 				<!-- <ul class="">
-					<li class="py-3 border-b border-zinc-300">
+					<li class="py-3 border-b border-slate-300">
 						<NuxtLink to="/about" @click.prevent="toggleModal"
 							>About</NuxtLink
 						>
 					</li>
-					<li class="py-3 border-b border-zinc-300">
+					<li class="py-3 border-b border-slate-300">
 						<NuxtLink to="/articles" @click.prevent="toggleModal"
 							>Articles</NuxtLink
 						>
@@ -56,10 +56,10 @@
 			</div>
 			<!-- <span v-if="supabaseUser">{{ supabaseUser.email }}</span> -->
 			<!-- <div
-				class="md:hidden flex flex-row items-center border border-zinc-100 rounded-full shadow py-2 px-6 cursor-pointer"
+				class="md:hidden flex flex-row items-center border border-slate-100 rounded-full shadow py-2 px-6 cursor-pointer"
 				@click="toggleModal"
 			>
-				<span class="text-zinc-500 text-sm mr-2">Menu</span>
+				<span class="text-slate-500 text-sm mr-2">Menu</span>
 				<span class="text-sm">
 					<i class="fa-solid fa-bars-staggered"></i>
 				</span>

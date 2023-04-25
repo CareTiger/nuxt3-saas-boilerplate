@@ -10,7 +10,7 @@
 		/>
 		<ul
 			v-if="articles.length > 0"
-			class="space-y-4 rounded-lg z-10 py-4 px-6 bg-zinc-100"
+			class="space-y-4 rounded-lg z-10 py-4 px-6 bg-slate-100"
 		>
 			<li
 				class="flex flex-row items-center justify-between"

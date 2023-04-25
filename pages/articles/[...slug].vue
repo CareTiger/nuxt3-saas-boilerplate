@@ -19,11 +19,11 @@
 			class="mt-10 md:mt-20 mx-auto flex flex-col md:grid md:grid-cols-12 md:gap-10"
 		>
 			<div class="md:col-start-3 md:col-span-8 space-y-4">
-				<p class="text-sm text-zinc-500">
+				<p class="text-sm text-slate-500">
 					{{ useConvertDate(data.updatedAt) }}
 				</p>
 				<div class="flex flex-row items-center space-x-4">
-					<span class="uppercase text-xs text-zinc-500">Share</span>
+					<span class="uppercase text-xs text-slate-500">Share</span>
 					<SVGTwitter class="text-xs" />
 					<SVGLinkedIn class="text-xs" />
 				</div>
