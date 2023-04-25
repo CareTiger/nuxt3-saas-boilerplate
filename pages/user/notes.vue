@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h3 class="prose-h1 text-center text-3xl mb-6">Notes</h3>
 		<UserNoteCreate />
 		<div>
 			<ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
