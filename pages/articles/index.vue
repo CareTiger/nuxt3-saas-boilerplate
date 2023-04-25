@@ -3,7 +3,7 @@
 		<BlogHero class="p-8" />
 		<div class="p-8">
 			<ContentQuery path="/articles" v-slot="{ data }">
-				<ul>
+				<ul class="grid grid-cols-1 md:grid-cols-2">
 					<li
 						class="pb-6"
 						v-for="article in useSortArticlesByDate(data)"

@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-lg hover:bg-slate-100 cursor-pointer">
+	<div class="rounded-lg hover:bg-slate-100 cursor-pointer p-4">
 		<p class="text-slate-400 text-xs">
 			{{ useConvertDate(article.updatedAt) }}
 		</p>

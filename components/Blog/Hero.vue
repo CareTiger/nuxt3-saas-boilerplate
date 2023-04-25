@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full">
+	<div class="w-full p-8">
 		<h1 class="text-2xl md:text-4xl mt-6 font-bold tracking-tight">
 			Writing on software design, company building, and the aerospace
 			industry.
