@@ -53,7 +53,6 @@
 	</div>
 </template>
 <script setup lang="ts">
-const supabaseUser = useSupabaseUser();
 const supabaseAuthClient = useSupabaseAuthClient();
 
 const loading = ref(false);

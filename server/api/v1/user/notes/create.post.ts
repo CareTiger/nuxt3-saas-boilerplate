@@ -3,7 +3,6 @@ import { createNote } from "~/server/db/notes";
 
 export default defineEventHandler(async (event) => {
 	const payload = await readBody(event);
-	console.log(payload);
 	try {
 		// create a note for the user
 		const note = await createNote(
@@ -13,6 +12,13 @@ export default defineEventHandler(async (event) => {
 		);
 	} catch (error) {
 		console.log(error);
+		return sendError(
+			event,
+			createError({
+				statusCode: 400,
+				statusMessage: "Something went wrong.",
+			})
+		);
 	}
 	return payload;
 });
